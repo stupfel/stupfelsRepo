@@ -23,10 +23,10 @@ namespace VierGewinnt
         const int MaxReihen = 6;
         const int MaxSpalten = 7;
 
-        //public void VierGewinntController()
-        //{
-        //    _ArrSpielfeld = new int[MaxReihen, MaxSpalten];
-        //}
+        public VierGewinntController()
+        {
+            _ArrSpielfeld = new int[MaxReihen, MaxSpalten];
+        }
 
         /*
          * Gibt immer die Anzahl des übergebenen Steins 
@@ -90,5 +90,114 @@ namespace VierGewinnt
             }
             return returnValue;
         }
+
+        /* Statische Hilfsfunktionen */
+        public static bool checkArrayWaagerecht(int[,] _ArrFeld, int _Pruefwert)
+        {
+            bool returnValue = false;
+
+            for (int iReihe = 0; iReihe < MaxReihen; iReihe++)
+            {
+                for (int iSpalte = 0; iSpalte < MaxReihen; iSpalte++)
+                {
+                    //Console.WriteLine("Check " + iReihe + " " + iSpalte);
+                    try
+                    {
+                        if ((_ArrFeld[iReihe, iSpalte] == _Pruefwert) &&
+                            (_ArrFeld[iReihe, iSpalte + 1] == _Pruefwert) &&
+                            (_ArrFeld[iReihe, iSpalte + 2] == _Pruefwert) &&
+                            (_ArrFeld[iReihe, iSpalte + 3] == _Pruefwert))
+                        {
+                            returnValue = true;
+                        }
+                        else
+                        { }
+                    }
+                    catch (IndexOutOfRangeException e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                }
+            }
+            return returnValue;
+        }
+        public static bool checkArraySenkrecht(int[,] _ArrFeld, int _Pruefwert)
+        {
+            bool returnValue = false;
+
+            for (int iReihe = 0; iReihe < MaxReihen; iReihe++)
+            {
+                for (int iSpalte = 0; iSpalte < MaxReihen; iSpalte++)
+                {
+                    //Console.WriteLine("Check " + iReihe + " " + iSpalte);
+                    try
+                    {
+                        if ((_ArrFeld[iReihe, iSpalte] == _Pruefwert) &&
+                            (_ArrFeld[iReihe + 1, iSpalte] == _Pruefwert) &&
+                            (_ArrFeld[iReihe + 2, iSpalte] == _Pruefwert) &&
+                            (_ArrFeld[iReihe + 3, iSpalte] == _Pruefwert))
+                        {
+                            returnValue = true;
+                        }
+                        else
+                        { }
+                    }
+                    catch (IndexOutOfRangeException e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                }
+            }
+            return returnValue;
+
+        }
+        public static bool checkArrayDiagonal(int[,] _ArrFeld, int _Pruefwert)
+        {
+            bool returnValue = false;
+
+            for (int iReihe = 0; iReihe < MaxReihen; iReihe++)
+            {
+                for (int iSpalte = 0; iSpalte < MaxReihen; iSpalte++)
+                {
+                    //Console.WriteLine("Check " + iReihe + " " + iSpalte);
+                    try
+                    {
+                        if ((_ArrFeld[iReihe, iSpalte] == _Pruefwert) &&
+                            (_ArrFeld[iReihe - 1, iSpalte + 1] == _Pruefwert) &&
+                            (_ArrFeld[iReihe - 2, iSpalte + 2] == _Pruefwert) &&
+                            (_ArrFeld[iReihe - 3, iSpalte + 3] == _Pruefwert))
+                        {
+                            returnValue = true;
+                        }
+                        else
+                        { }
+                    }
+                    catch (IndexOutOfRangeException e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+
+                    try
+                    {
+                        if ((_ArrFeld[iReihe, iSpalte] == _Pruefwert) &&
+                            (_ArrFeld[iReihe + 1, iSpalte + 1] == _Pruefwert) &&
+                            (_ArrFeld[iReihe + 2, iSpalte + 2] == _Pruefwert) &&
+                            (_ArrFeld[iReihe + 3, iSpalte + 3] == _Pruefwert))
+                        {
+                            returnValue = true;
+                        }
+                        else
+                        { }
+                    }
+                    catch (IndexOutOfRangeException e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                }
+            }
+            return returnValue;
+
+        }
+
     }
 }

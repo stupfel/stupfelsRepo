@@ -1,0 +1,7 @@
+- Initialisieren
+	- Ankündigen wer am Zug ist                            <-|
+	- Zug entgegen nehmen     <-|                            |
+		- Prüfen ob Zug gültig -|                            |
+	- Prüfen ob ein Spieler gewonnen hat                     |
+		-> Gewinner vorhanden? Gewonnene Steine Markieren    |
+		-> kein Gewinner                                    -|
