@@ -10,28 +10,30 @@ namespace VierGewinnt
     class Program
     {
 
-                    static int[,] _Feld;
-        const int leer = 0;
-        const int gesetzt = 1;
-        const int MaxReihen = 6;
-        const int MaxSpalten = 7;
+        //static int[,] _Feld;
+        //const int leer = 0;
+        //const int gesetzt = 1;
+        //const int MaxReihen = 6;
+        //const int MaxSpalten = 7;
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Start");
-            _Feld = new int[,] {{ 0,0,0,0,0,0,0 },
-                                { 1,1,1,1,1,0,0 },
-                                { 0,1,0,0,0,0,0 },
-                                { 0,1,1,0,0,0,0 },
-                                { 0,1,0,1,0,0,0 },
-                                { 0,0,0,0,0,0,0 }};
-           
-            Console.WriteLine(VierGewinntController.checkArrayWaagerecht(_Feld, gesetzt));
-            Console.WriteLine(VierGewinntController.checkArraySenkrecht(_Feld, gesetzt));
-            Console.WriteLine(VierGewinntController.checkArrayDiagonal(_Feld, gesetzt));
+            GameController gc = new GameController();
 
-            //Debug.WriteLine(checkArrayWaagerecht(_Feld, gesetzt) + "");
-            //Trace.Assert(checkArraySenkrecht(_Feld, gesetzt));
+            //Console.WriteLine("Start");
+            //_Feld = new int[,] {{ 0,0,0,0,0,0,0 },
+            //                    { 1,1,1,1,1,0,0 },
+            //                    { 0,1,0,0,0,0,0 },
+            //                    { 0,1,1,0,0,0,0 },
+            //                    { 0,1,0,1,0,0,0 },
+            //                    { 0,0,0,0,0,0,0 }};
+           
+            //Console.WriteLine(VierGewinntController.checkArrayWaagerecht(_Feld, gesetzt));
+            //Console.WriteLine(VierGewinntController.checkArraySenkrecht(_Feld, gesetzt));
+            //Console.WriteLine(VierGewinntController.checkArrayDiagonal(_Feld, gesetzt));
+
+            ////Debug.WriteLine(checkArrayWaagerecht(_Feld, gesetzt) + "");
+            ////Trace.Assert(checkArraySenkrecht(_Feld, gesetzt));
 
 
             Console.WriteLine("... Press escape, a, then control X");
@@ -58,7 +60,7 @@ namespace VierGewinnt
             }
             Console.Read();
 
-            Console.WriteLine("Ende");
+            //Console.WriteLine("Ende");
         }
 
     }

@@ -18,7 +18,7 @@ namespace VierGewinnt
 
         const int SteinPlayer1 = 1;
         const int SteinPlayer2 = 2;
-        const int SteinLeer = 0;
+        public const int SteinLeer = 0;
 
         const int MaxReihen = 6;
         const int MaxSpalten = 7;
@@ -26,6 +26,46 @@ namespace VierGewinnt
         public VierGewinntController()
         {
             _ArrSpielfeld = new int[MaxReihen, MaxSpalten];
+        }
+
+        public int getStartspieler()
+        {
+            Random r = new Random();
+            return r.Next(SteinPlayer1, SteinPlayer2);
+        }
+
+        /*
+         * prüft und setzt den Spielerstein in die angegebene Spalte
+         * Return True wenn erfolgreich gesetzt. False wenn nicht möglich.
+         */
+        public bool SetSpielstein(int _PlayerStein, int _Spalte)
+        {
+            bool returnValue = false;
+            if (_Spalte < 1 || _Spalte > MaxSpalten)
+            {
+                returnValue = false;
+            }
+            else
+            {
+                // Prüfe ob in der obersten Reihe der angegebenen Spalte noch Platz ist
+                if (_ArrSpielfeld[0, _Spalte - 1] != SteinLeer)
+                {
+                    returnValue = false;
+                }
+                else
+                {
+                    for (int iReihe = MaxReihen - 1; iReihe >= 0; iReihe--)
+                    {
+                        if (_ArrSpielfeld[iReihe, _Spalte] == SteinLeer)
+                        {
+                            _ArrSpielfeld[iReihe, _Spalte] = _PlayerStein;
+                            returnValue = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            return returnValue;
         }
 
         /*
@@ -48,6 +88,10 @@ namespace VierGewinnt
             return intAnzahlPlayerStein;
         }
 
+        /*
+         *  Gibt den Playerstein zurück der als nächstes am Zug ist.
+         *  Wenn keiner am Zug ist wird stein leer zurück gegeben.
+         */
         public int getNextPlayerStein()
         {
             int intAnzahlPlayer1 = 0;
@@ -77,16 +121,9 @@ namespace VierGewinnt
         public bool checkPlayerWin(int _PlayerStein)
         {
             bool returnValue = false;
-
-            for (int iReihe = 0; iReihe < MaxReihen; iReihe++)
+            if (checkArrayDiagonal(this._ArrSpielfeld, _PlayerStein) || checkArrayWaagerecht(this._ArrSpielfeld, _PlayerStein) || checkArraySenkrecht(this._ArrSpielfeld, _PlayerStein))
             {
-                for (int iSpalte = 0; iSpalte + 3 < MaxSpalten; iSpalte++)
-                {
-                    if ((_ArrSpielfeld[iReihe, iSpalte] == _PlayerStein) && (_ArrSpielfeld[iReihe, iSpalte + 1] == _PlayerStein) && (_ArrSpielfeld[iReihe, iSpalte + 2] == _PlayerStein) && (_ArrSpielfeld[iReihe, iSpalte + 3] == _PlayerStein))
-                    {
-                        returnValue = true;
-                    }
-                }
+                returnValue = true;
             }
             return returnValue;
         }
