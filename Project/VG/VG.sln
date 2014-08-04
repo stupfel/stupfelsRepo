@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VG", "VierGewinnt\VG.csproj", "{7B651D84-DE9A-4A7E-9354-D3D0BED71D1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_VG", "Test_VG\Test_VG.csproj", "{F5D177CD-025E-44B9-8D31-397EEB06F9DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B651D84-DE9A-4A7E-9354-D3D0BED71D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B651D84-DE9A-4A7E-9354-D3D0BED71D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B651D84-DE9A-4A7E-9354-D3D0BED71D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B651D84-DE9A-4A7E-9354-D3D0BED71D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5D177CD-025E-44B9-8D31-397EEB06F9DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5D177CD-025E-44B9-8D31-397EEB06F9DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5D177CD-025E-44B9-8D31-397EEB06F9DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5D177CD-025E-44B9-8D31-397EEB06F9DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
