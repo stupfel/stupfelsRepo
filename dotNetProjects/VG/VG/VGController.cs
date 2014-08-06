@@ -56,9 +56,9 @@ namespace VG
                 {
                     for (int iReihe = MaxReihen - 1; iReihe >= 0; iReihe--)
                     {
-                        if (_ArrSpielfeld[iReihe, _Spalte] == SteinLeer)
+                        if (_ArrSpielfeld[iReihe, _Spalte - 1] == SteinLeer)
                         {
-                            _ArrSpielfeld[iReihe, _Spalte] = _PlayerStein;
+                            _ArrSpielfeld[iReihe, _Spalte - 1] = _PlayerStein;
                             returnValue = true;
                             break;
                         }
@@ -135,7 +135,7 @@ namespace VG
 
             for (int iReihe = 0; iReihe < MaxReihen; iReihe++)
             {
-                for (int iSpalte = 0; iSpalte < MaxReihen; iSpalte++)
+                for (int iSpalte = 0; iSpalte < MaxSpalten; iSpalte++)
                 {
                     //Console.WriteLine("Check " + iReihe + " " + iSpalte);
                     try
@@ -152,7 +152,7 @@ namespace VG
                     }
                     catch (IndexOutOfRangeException e)
                     {
-                        Console.WriteLine(e.StackTrace);
+                        //Console.WriteLine(e.StackTrace);
                     }
                 }
             }
@@ -164,7 +164,7 @@ namespace VG
 
             for (int iReihe = 0; iReihe < MaxReihen; iReihe++)
             {
-                for (int iSpalte = 0; iSpalte < MaxReihen; iSpalte++)
+                for (int iSpalte = 0; iSpalte < MaxSpalten; iSpalte++)
                 {
                     //Console.WriteLine("Check " + iReihe + " " + iSpalte);
                     try
@@ -181,7 +181,7 @@ namespace VG
                     }
                     catch (IndexOutOfRangeException e)
                     {
-                        Console.WriteLine(e.StackTrace);
+                        //Console.WriteLine(e.StackTrace);
                     }
                 }
             }
@@ -194,7 +194,7 @@ namespace VG
 
             for (int iReihe = 0; iReihe < MaxReihen; iReihe++)
             {
-                for (int iSpalte = 0; iSpalte < MaxReihen; iSpalte++)
+                for (int iSpalte = 0; iSpalte < MaxSpalten; iSpalte++)
                 {
                     //Console.WriteLine("Check " + iReihe + " " + iSpalte);
                     try
@@ -211,7 +211,7 @@ namespace VG
                     }
                     catch (IndexOutOfRangeException e)
                     {
-                        Console.WriteLine(e.StackTrace);
+                        //Console.WriteLine(e.StackTrace);
                     }
 
                     try
@@ -228,7 +228,7 @@ namespace VG
                     }
                     catch (IndexOutOfRangeException e)
                     {
-                        Console.WriteLine(e.StackTrace);
+                        //Console.WriteLine(e.StackTrace);
                     }
                 }
             }
@@ -236,5 +236,28 @@ namespace VG
 
         }
 
+        public void printSpielbrett()
+        {
+            StringBuilder sb;
+            Console.WriteLine("-------");
+            for (int iReihe = 0; iReihe < MaxReihen; iReihe++)
+            {
+                sb = new StringBuilder("");
+                for (int iSpalte = 0; iSpalte < MaxSpalten; iSpalte++)
+                {
+                    //Console.WriteLine("Check " + iReihe + " " + iSpalte);
+                    try
+                    {
+                        sb.Append(_ArrSpielfeld[iReihe, iSpalte]);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                }
+                Console.WriteLine(sb.ToString());
+            }
+            Console.WriteLine("-------");
+        }
     }
 }

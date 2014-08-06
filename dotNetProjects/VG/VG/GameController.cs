@@ -40,27 +40,58 @@ namespace VG
                     Playerstein = vgc.getStartspieler();
                 }
 
+                isEingabeOK = false;
                 while (isEingabeOK == false)
                 {
                     Console.WriteLine("Spieler " + Playerstein + " Bitte ein Stein einwerfen: (1-7)");
                     ConsoleKeyInfo info = Console.ReadKey();
-                    if (info.Key == ConsoleKey.D1 ||
-                        info.Key == ConsoleKey.D2 ||
-                        info.Key == ConsoleKey.D3 ||
-                        info.Key == ConsoleKey.D4 ||
-                        info.Key == ConsoleKey.D5 ||
-                        info.Key == ConsoleKey.D6 ||
-                        info.Key == ConsoleKey.D7)
+                    switch (info.Key)
                     {
-                        isEingabeOK = true;
+                        case ConsoleKey.D1:
+                            isEingabeOK = vgc.SetSpielstein(Playerstein, 1);
+                            break;
+                        case ConsoleKey.D2:
+                            isEingabeOK = vgc.SetSpielstein(Playerstein, 2);
+                            break;
+                        case ConsoleKey.D3:
+                            isEingabeOK = vgc.SetSpielstein(Playerstein, 3);
+                            break;
+                        case ConsoleKey.D4:
+                            isEingabeOK = vgc.SetSpielstein(Playerstein, 4);
+                            break;
+                        case ConsoleKey.D5:
+                            isEingabeOK = vgc.SetSpielstein(Playerstein, 5);
+                            break;
+                        case ConsoleKey.D6:
+                            isEingabeOK = vgc.SetSpielstein(Playerstein, 6);
+                            break;
+                        case ConsoleKey.D7:
+                            isEingabeOK = vgc.SetSpielstein(Playerstein, 7);
+                            break;
+                        default:
+                            isEingabeOK = false;
+                            break;
+                    }
+
+                    if (isEingabeOK)
+                    {
+                        //isEingabeOK = true;
                     }
                     else
                     {
                         Console.WriteLine("Ungültig");
-                        isEingabeOK = false;
+                        //isEingabeOK = false;
                     }
                 }
 
+                if (vgc.checkPlayerWin(Playerstein))
+                {
+
+                    Console.WriteLine("Spieler " + Playerstein + " hat gewonnen.");
+                }
+
+
+                vgc.printSpielbrett();
             }
         }
     }
