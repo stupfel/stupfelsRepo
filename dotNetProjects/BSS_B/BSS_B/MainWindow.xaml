@@ -1,0 +1,23 @@
+﻿<Window x:Class="BSS_B.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="50" Width="30"
+        
+        WindowState="Normal"
+        WindowStyle="None"  
+        Background="#F7000000"  
+        Topmost="True"  
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"  
+        Closing="Window_Closing"  
+        MouseMove="_MouseMove" 
+        KeyDown="_KeyDown"  
+        Loaded="Window_Loaded"  
+        OpacityMask="Black"  
+       
+        
+        >
+    <Grid Background="Black">
+        <Ellipse x:Name="MyEllipse" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="12" Margin="247,96,0,0" VerticalAlignment="Top" Width="15"/>
+
+    </Grid>
+</Window>
