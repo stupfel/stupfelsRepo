@@ -65,6 +65,9 @@
     <Compile Include="B\BLogik.cs" />
     <Compile Include="B\Koordinate.cs" />
     <Compile Include="B\Stages.cs" />
+    <Compile Include="B\Vierer\DiagonallRunterVierer.cs" />
+    <Compile Include="B\Vierer\DiagonallHochVierer.cs" />
+    <Compile Include="B\Vierer\VertikalerVierer.cs" />
     <Compile Include="B\Vierer\HorizontalerVierer.cs" />
     <Compile Include="B\Vierer\IVierer.cs" />
     <Compile Include="MainWindow.xaml.cs">

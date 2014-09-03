@@ -8,9 +8,6 @@ namespace VG2.Logik.B.Vierer
 {
     interface IVierer
     {
-        //private readonly int x;
-        //private readonly int y;
-
         Koordinate Eins
         {
             get;
