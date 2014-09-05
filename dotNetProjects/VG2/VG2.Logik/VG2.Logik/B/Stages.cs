@@ -8,5 +8,6 @@ namespace VG2.Logik.B
 {
     class Stages
     {
+
     }
 }

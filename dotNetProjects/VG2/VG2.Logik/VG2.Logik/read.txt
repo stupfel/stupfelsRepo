@@ -1,0 +1,31 @@
+Spielzustand =  Legen + Positionieren + Vierer erkennen
+
+-----------------------------------------------------------------
+Legen:
+Legen in eine Spalte - Angabe der Spalte
+1. Spalte ist leer
+2. Spalte enthält schon Steine
+3. Spalte ist bereits voll
+
+- Beim Legen höchste Zeile finden oder maximum erreicht.
+
+Positionieren
+Spielfeld
+ZweidimArray
+1. Index = Spalte
+2. Index = Reihe
+
+Prinzipien: 
+- "Tell dont't ask"
+- "Command/Query Separation"
+-> LegeSteinInSpalte() sollte eine Ausnahme auslösen
+-----------------------------------------------------------------
+Steine finden:
+zwei Teilprobleme:
+- ermitteln der indizes benachbarer Felder
+- Prüfung, ob vier benachbarte Felder mit Steinen gleicher Farbe besetzt sind.
+
+Gewinner ermitteln:
+1. Liste der möglichen Vierergruppen bestimmen.
+2. aus dieser Liste und dem Spielfeld ermitteln, ob es eine Viergruppe der selben Farbe gibt.
+var gewinnerVierer = spielfeld.AlleVierer().SelbeFarbe(spielfeld)
