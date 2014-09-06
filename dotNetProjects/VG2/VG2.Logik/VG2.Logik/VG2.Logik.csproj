@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="VGSpiel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,7 +62,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="B\B.cs" />
+    <Compile Include="B\Brett.cs" />
     <Compile Include="B\BLogik.cs" />
     <Compile Include="B\Koordinate.cs" />
     <Compile Include="B\Stages.cs" />

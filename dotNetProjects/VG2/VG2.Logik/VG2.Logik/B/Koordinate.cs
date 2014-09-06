@@ -8,13 +8,23 @@ namespace VG2.Logik.B
 {
     public class Koordinate
     {
-        private int x;
-        private int y;
+        private int _x;
+        private int _y;
 
         public Koordinate(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this._x = x;
+            this._y = y;
+        }
+
+        public int X
+        {
+            get {return _x; }
+        }
+
+        public int Y
+        {
+            get { return _y; }
         }
     }
 }
