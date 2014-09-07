@@ -18,7 +18,15 @@ namespace VG2.Logik
 
         public void LegeSteinInSpalte(int Spalte)
         {
+            switch (Spielbrett.Zustand)
+	        {
+               1
 
+            break;
+		        default:
+	        }
+
+            Spielbrett.setSpielstein
         }
     }
 }
