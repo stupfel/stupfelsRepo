@@ -20,13 +20,25 @@ namespace VG2.Logik
         {
             switch (Spielbrett.Zustand)
 	        {
-               1
+                case Brett.Zustaende.RotIstAmZug:
+                    Spielbrett.SpieleStein(Brett.SPIELSTEIN_ROT, Spalte);
+                    Spielbrett.Zustand = Brett.Zustaende.GelbIstAmZug;
+                break;
+                case Brett.Zustaende.GelbIstAmZug:
+                    Spielbrett.SpieleStein(Brett.SPIELSTEIN_GELB, Spalte);
+                    Spielbrett.Zustand = Brett.Zustaende.RotIstAmZug;
+                break;
+                case Brett.Zustaende.RotHatGewonnen:
 
-            break;
-		        default:
+                break;
+                case Brett.Zustaende.GelbHatGewonnen:
+
+                break;
+
+
 	        }
 
-            Spielbrett.setSpielstein
+            
         }
     }
 }
