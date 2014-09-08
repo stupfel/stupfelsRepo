@@ -10,14 +10,8 @@ namespace VG2.Logik.B
 {
     class BLogik
     {
-
-        internal static void Gewinner(Brett brett)
-        {
-            Brett.AlleVierer(brett);
-        }
-
        
-        internal static IEnumerable<IVierer> SelbeFarbe(this IEnumerable<IVierer> vierer, Brett brett)
+        internal static IEnumerable<IVierer> SelbeFarbe(IEnumerable<IVierer> vierer, Brett brett)
         {
             foreach(var vier in vierer)
             {
@@ -43,5 +37,45 @@ namespace VG2.Logik.B
             }
             throw new SpalteVollException();
         }
+
+        internal static IEnumerable<IVierer> AlleVierer(Brett brett)
+        {
+            // Horizontale Vierer
+            for (var x = 1; x <= Brett.MaxAnzahlSpalten - 4; x++)
+            {
+                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
+                {
+                    yield return new HorizontalerVierer(x, y);
+                }
+            }
+
+            // Vertikale Vierer
+            for (var x = 1; x <= Brett.MaxAnzahlSpalten - 4; x++)
+            {
+                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
+                {
+                    yield return new VertikalerVierer(x, y);
+                }
+            }
+
+            // DiagonalHoch Vierer
+            for (var x = 1; x <= Brett.MaxAnzahlSpalten - 4; x++)
+            {
+                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
+                {
+                    yield return new DiagonallHochVierer(x, y);
+                }
+            }
+
+            // DiagonalRunter Vierer
+            for (var x = 1; x <= Brett.MaxAnzahlSpalten - 4; x++)
+            {
+                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
+                {
+                    yield return new DiagonallRunterVierer(x, y);
+                }
+            }
+        }
+    
     }
 }

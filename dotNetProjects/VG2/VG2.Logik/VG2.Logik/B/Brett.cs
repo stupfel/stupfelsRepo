@@ -36,6 +36,17 @@ namespace VG2.Logik.B
             _Zustand = Zustaende.RotIstAmZug;
         }
 
+        public int Gewinner()
+        {
+            IEnumerable<IVierer> iEnumVierer;
+            iEnumVierer = BLogik.SelbeFarbe(BLogik.AlleVierer(this), this);
+            if (iEnumVierer.Count<IVierer>() > 0)
+            {
+                return this.getSpielstein(iEnumVierer.ElementAt<IVierer>(0).Eins);
+            }
+            return 0;
+        }
+
         public void SpieleStein(int Spielfarbe, int Spalte)
         {
             Koordinate koordinate;
@@ -82,44 +93,6 @@ namespace VG2.Logik.B
             set { _Zustand = value; }
         }
 
-        internal static IEnumerable<IVierer> AlleVierer(this Brett brett)
-        {
-            // Horizontale Vierer
-            for (var x = 1; x <= Brett.MaxAnzahlSpalten - 4; x++)
-            {
-                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
-                {
-                    yield return new HorizontalerVierer(x, y);
-                }
-            }
-
-            // Vertikale Vierer
-            for (var x = 1; x <= Brett.MaxAnzahlSpalten - 4; x++)
-            {
-                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
-                {
-                    yield return new VertikalerVierer(x, y);
-                }
-            }
-
-            // DiagonalHoch Vierer
-            for (var x = 1; x <= Brett.MaxAnzahlSpalten - 4; x++)
-            {
-                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
-                {
-                    yield return new DiagonallHochVierer(x, y);
-                }
-            }
-
-            // DiagonalRunter Vierer
-            for (var x = 1; x <= Brett.MaxAnzahlSpalten - 4; x++)
-            {
-                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
-                {
-                    yield return new DiagonallRunterVierer(x, y);
-                }
-            }
-        }
-    
+        
     }
 }

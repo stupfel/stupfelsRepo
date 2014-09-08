@@ -28,17 +28,16 @@ namespace VG2.Logik
                     Spielbrett.SpieleStein(Brett.SPIELSTEIN_GELB, Spalte);
                     Spielbrett.Zustand = Brett.Zustaende.RotIstAmZug;
                 break;
-                case Brett.Zustaende.RotHatGewonnen:
+            }
 
-                break;
-                case Brett.Zustaende.GelbHatGewonnen:
-
-                break;
-
-
-	        }
-
-            
+            if (Spielbrett.Gewinner() == Brett.SPIELSTEIN_ROT)
+            {
+                Spielbrett.Zustand = Brett.Zustaende.RotHatGewonnen;
+            }
+            else if(Spielbrett.Gewinner() == Brett.SPIELSTEIN_GELB)
+            {
+                Spielbrett.Zustand = Brett.Zustaende.GelbHatGewonnen;
+            }
         }
     }
 }
