@@ -11,6 +11,9 @@ namespace VG2.Logik
     {
         Brett Spielbrett;
 
+        public VGSpiel()
+        { }
+
         public void initialisiereSpiel()
         {
             Spielbrett = new Brett();
@@ -38,6 +41,11 @@ namespace VG2.Logik
             {
                 Spielbrett.Zustand = Brett.Zustaende.GelbHatGewonnen;
             }
+        }
+    
+        public string getSpielbrettToString()
+        {
+            return Spielbrett.getBrettAsString();
         }
     }
 }

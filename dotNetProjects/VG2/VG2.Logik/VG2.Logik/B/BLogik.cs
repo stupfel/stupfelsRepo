@@ -13,15 +13,29 @@ namespace VG2.Logik.B
        
         internal static IEnumerable<IVierer> SelbeFarbe(IEnumerable<IVierer> vierer, Brett brett)
         {
+            bool hasViererSelbeFarbe;
             foreach(var vier in vierer)
             {
-                if ((brett.getSpielstein(vier.Eins) != 0) &&
-                    (brett.getSpielstein(vier.Eins) == brett.getSpielstein(vier.Zwei)) &&
-                    (brett.getSpielstein(vier.Eins) == brett.getSpielstein(vier.Drei)) &&
-                    (brett.getSpielstein(vier.Eins) == brett.getSpielstein(vier.Vier)))
+                hasViererSelbeFarbe = false;
+                try
+                {
+                    if ((brett.getSpielstein(vier.Eins) != 0) &&
+                       (brett.getSpielstein(vier.Eins) == brett.getSpielstein(vier.Zwei)) &&
+                       (brett.getSpielstein(vier.Eins) == brett.getSpielstein(vier.Drei)) &&
+                       (brett.getSpielstein(vier.Eins) == brett.getSpielstein(vier.Vier)))
+                    {
+                        hasViererSelbeFarbe = true;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    hasViererSelbeFarbe = false;
+                }
+                if (hasViererSelbeFarbe)
                 {
                     yield return vier;
                 }
+               
             }
         }
 

@@ -11,21 +11,21 @@ namespace VG2.Logik.B
     public class Brett
     {
         //das Spielbrett
-        public static const int MaxAnzahlReihen = 6;
-        public static const int MaxAnzahlSpalten = 7;
+        public const int MaxAnzahlReihen = 6;
+        public const int MaxAnzahlSpalten = 7;
 
-        public static const int SPIELSTEIN_KEINER = 0;
-        public static const int SPIELSTEIN_ROT = 1;
-        public static const int SPIELSTEIN_GELB = 2;
+        public const int SPIELSTEIN_KEINER = 0;
+        public const int SPIELSTEIN_ROT = 1;
+        public const int SPIELSTEIN_GELB = 2;
 
         private int[,] _feld;
         
-        public static enum Zustaende
+        public enum Zustaende
         {
-            RotIstAmZug,
-            GelbIstAmZug,
-            RotHatGewonnen,
-            GelbHatGewonnen
+            RotIstAmZug = 0,
+            GelbIstAmZug = 1,
+            RotHatGewonnen = 2,
+            GelbHatGewonnen = 3,
         };
 
         private Zustaende _Zustand;
@@ -51,7 +51,7 @@ namespace VG2.Logik.B
         {
             Koordinate koordinate;
             koordinate = BLogik.FindeFreiesFeldInSpalte(this, Spalte);
-            if (koordinate != null)
+            if (koordinate == null)
             {
                 // keine freie Koordinate gefunden -> voll
             }
@@ -93,6 +93,26 @@ namespace VG2.Logik.B
             set { _Zustand = value; }
         }
 
-        
+        public string getBrettAsString()
+        {
+            // String wird von oben nach unten aufgebaut -> also die oberen Reihen zuerst abarbeiten.
+            StringBuilder sb = new StringBuilder("");
+            for (int iReihe = _feld.GetLength(1) - 1; iReihe >= 0; iReihe--)
+            {
+                for (int iSpalte = 0; iSpalte < _feld.GetLength(0); iSpalte++)
+                {
+                    try
+                    {
+                        sb.Append(_feld[iSpalte, iReihe]);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                }
+                sb.Append("\n");
+            }
+            return sb.ToString();
+        }
     }
 }

@@ -15,6 +15,15 @@ ZweidimArray
 1. Index = Spalte
 2. Index = Reihe
 
+-> X = Spalte
+-> Y = Reihe
+
+4
+3
+2
+1
+ 1234
+
 Prinzipien: 
 - "Tell dont't ask"
 - "Command/Query Separation"
