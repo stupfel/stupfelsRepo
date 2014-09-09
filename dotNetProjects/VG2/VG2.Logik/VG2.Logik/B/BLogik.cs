@@ -49,7 +49,7 @@ namespace VG2.Logik.B
                     return koordinate;
                 }
             }
-            throw new SpalteVollException();
+            throw new SpalteVollException("Spalte ist bereits voll!");
         }
 
         internal static IEnumerable<IVierer> AlleVierer(Brett brett)

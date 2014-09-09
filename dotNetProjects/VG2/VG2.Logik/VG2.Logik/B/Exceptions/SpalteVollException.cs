@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VG2.Logik.B.Exceptions
 {
-    class SpalteVollException : Exception
+    public class SpalteVollException : Exception
     {
         public SpalteVollException()
         { }
