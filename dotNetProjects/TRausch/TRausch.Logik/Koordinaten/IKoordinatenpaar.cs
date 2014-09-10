@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TRausch.Logik.Koordinaten
 {
-    interface IKoordinatenpaar
+    public interface IKoordinatenpaar
     {
         Koordinate Eins
         {
@@ -16,6 +16,12 @@ namespace TRausch.Logik.Koordinaten
         Koordinate Zwei
         {
             get;
+        }
+
+        int AnzahlDreier
+        {
+            get;
+            set;
         }
     }
 }

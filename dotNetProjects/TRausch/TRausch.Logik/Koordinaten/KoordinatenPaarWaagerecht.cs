@@ -11,6 +11,7 @@ namespace TRausch.Logik
     {
         Koordinate _k1;
         Koordinate _k2;
+        int _AnzahlDreier;
 
         public KoordinatenPaarWaagerecht(Koordinate k1)
         {
@@ -32,6 +33,12 @@ namespace TRausch.Logik
         public Koordinate Zwei
         {
             get { return _k2; }
+        }
+
+        public int AnzahlDreier
+        {
+            get { return _AnzahlDreier; }
+            set { _AnzahlDreier = value; }
         }
     }
 }

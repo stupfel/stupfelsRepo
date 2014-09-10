@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TRausch.Logik.Dreier;
+using TRausch.Logik.Koordinaten;
 
 namespace TRausch.Logik
 {
@@ -12,17 +14,76 @@ namespace TRausch.Logik
         public const int MaxAnzahlReihen = 20;
         public const int MaxAnzahlSpalten = 20;
 
-        public const int SPIELSTEIN_A = 0;
-        public const int SPIELSTEIN_B = 1;
-        public const int SPIELSTEIN_C = 2;
+        private const int SpielsteinRangeUnten = 1;
+        private const int SpielsteinRangeOben = 7;
 
         private int[,] _feld;
 
         public Brett()
         {
             _feld = new int[MaxAnzahlSpalten, MaxAnzahlReihen];
+            FuelleBrettMitRandomSpielsteinen();
         }
 
+        private void FuelleBrettMitRandomSpielsteinen()
+        {
+            for (int x = 0; x < MaxAnzahlSpalten; x++)
+            {
+                for (int y = 0; y < MaxAnzahlReihen; y++)
+                {
+                    _feld[x, y] = getNextRandomSpielstein();
+                }
+            }
+        }
+
+        // Erzeugt Spielsteine in der vorgegebenen Range
+        private int getNextRandomSpielstein()
+        {
+            Random r = new Random();
+            return r.Next(SpielsteinRangeUnten, SpielsteinRangeOben);
+        }
+
+        // sucht das beste Koordinatenpaar heraus
+        public IKoordinatenpaar SucheKoordinatenpaar()
+        {
+            // TODO Koordinaten müssen noch getauscht werden
+
+            // 1. Liste von allen möglichen Koordinatenpaaren erzeugen.
+            // 2. Jede Koordinate im Paar auf mögliche Dreier überprüfen. Die Anzahl an gefundenen Dreiern pro Paar merken.
+            // 3. Das Paar mit den meisten Dreiern hat gewonnen und wird zurückgegeben.
+            IEnumerable<IKoordinatenpaar> enumKoordinatenpaare;
+            IEnumerable<IDreier> enumDreier;
+            IEnumerable<IDreier> enumDreierSelberSpielstein;
+            List<IKoordinatenpaar> lstKoordinatenpaar = new List<IKoordinatenpaar>();
+
+            enumKoordinatenpaare = BrettLogik.AlleKoordinatenpaare(this);
+
+            foreach (var kPaar in enumKoordinatenpaare)
+	        {
+                enumDreier = BrettLogik.AlleDreierZuKoordinatenpaar(kPaar);
+                enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(enumDreier, this);
+                kPaar.AnzahlDreier = enumDreierSelberSpielstein.Count();
+
+                if (lstKoordinatenpaar.Capacity == 0)
+                {
+                    lstKoordinatenpaar.Add(kPaar);
+                }
+                else
+                {
+                    if (lstKoordinatenpaar.ElementAt(0).AnzahlDreier < kPaar.AnzahlDreier)
+                    {
+                        lstKoordinatenpaar.Insert(0, kPaar);
+                    }
+                    else
+                    {
+                        lstKoordinatenpaar.Insert(1, kPaar);
+                    }
+                }
+                
+	        }
+
+            return lstKoordinatenpaar.Max<IKoordinatenpaar>();
+        }
         //public int Gewinner()
         //{
         //    IEnumerable<IVierer> iEnumVierer;
@@ -34,14 +95,14 @@ namespace TRausch.Logik
         //    return 0;
         //}
 
-        public void SpieleStein(int Spielfarbe, int Spalte)
-        {
-            Koordinate koordinate;
+        //public void SpieleStein(int Spielfarbe, int Spalte)
+        //{
+        //    Koordinate koordinate;
 
-            koordinate = BLogik.FindeFreiesFeldInSpalte(this, Spalte);
-            this.setSpielstein(koordinate, Spielfarbe);
+        //    koordinate = BLogik.FindeFreiesFeldInSpalte(this, Spalte);
+        //    this.setSpielstein(koordinate, Spielfarbe);
 
-        }
+        //}
 
         public void setSpielstein(Koordinate koordinate, int iFarbe)
         {
