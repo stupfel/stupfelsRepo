@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{22197D31-2476-4456-92AC-4CF63D67F30B}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{0CE76120-0653-46DB-A9F3-4FCBD5EB3671}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TRausch.Logik</RootNamespace>
-    <AssemblyName>TRausch.Logik</AssemblyName>
+    <RootNamespace>TRausch.App</RootNamespace>
+    <AssemblyName>TRausch.App</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,22 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brett.cs" />
-    <Compile Include="BrettLogik.cs" />
-    <Compile Include="Koordinaten\IKoordinatenpaar.cs" />
-    <Compile Include="Koordinaten\KoordinatenPaarSenkrecht.cs" />
-    <Compile Include="Koordinaten\KoordinatenPaarWaagerecht.cs" />
-    <Compile Include="Dreier\DreierSenkrechtBottomKoordinate.cs" />
-    <Compile Include="Dreier\DreierSenkrechtTopKoordinate.cs" />
-    <Compile Include="Dreier\DreierSenkrechtCenterKoordinate.cs" />
-    <Compile Include="Dreier\DreierWaagerechtRightKoordinate.cs" />
-    <Compile Include="Dreier\DreierWaagerechtCenterKoordinate.cs" />
-    <Compile Include="Dreier\DreierWaagerechtLeftKoordinate.cs" />
-    <Compile Include="Dreier\IDreier.cs" />
-    <Compile Include="Koordinaten\Koordinate.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spielstein.cs" />
-    <Compile Include="TRauschController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TRausch.Logik\TRausch.Logik.csproj">
+      <Project>{22197d31-2476-4456-92ac-4cf63d67f30b}</Project>
+      <Name>TRausch.Logik</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

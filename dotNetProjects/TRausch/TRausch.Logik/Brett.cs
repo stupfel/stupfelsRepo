@@ -31,17 +31,20 @@ namespace TRausch.Logik
             {
                 for (int y = 0; y < MaxAnzahlReihen; y++)
                 {
-                    _feld[x, y] = getNextRandomSpielstein();
+                    _feld[x, y] = BrettLogik.GenerateRandomNumber(SpielsteinRangeUnten, SpielsteinRangeOben);
                 }
             }
         }
 
-        // Erzeugt Spielsteine in der vorgegebenen Range
-        private int getNextRandomSpielstein()
-        {
-            Random r = new Random();
-            return r.Next(SpielsteinRangeUnten, SpielsteinRangeOben);
-        }
+        //// Erzeugt Spielsteine in der vorgegebenen Range
+        //private int getNextRandomSpielstein()
+        //{
+        //    int returnValue;
+        //    Random r = new Random();
+        //    returnValue = r.Next(SpielsteinRangeUnten, SpielsteinRangeOben);
+        //    Console.Write(returnValue);
+        //    return returnValue;
+        //}
 
         // sucht das beste Koordinatenpaar heraus
         public IKoordinatenpaar SucheKoordinatenpaar()
