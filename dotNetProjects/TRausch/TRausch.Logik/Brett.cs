@@ -25,13 +25,27 @@ namespace TRausch.Logik
             FuelleBrettMitRandomSpielsteinen();
         }
 
+        public Brett(Brett brett)
+        {
+            this._feld = brett._feld.Clone() as int[,];
+        }
+
         private void FuelleBrettMitRandomSpielsteinen()
         {
+            IEnumerable<IDreier> dreier;
+            IEnumerable<IDreier> enumDreierSelberSpielstein;
             for (int x = 0; x < MaxAnzahlSpalten; x++)
             {
                 for (int y = 0; y < MaxAnzahlReihen; y++)
                 {
-                    _feld[x, y] = BrettLogik.GenerateRandomNumber(SpielsteinRangeUnten, SpielsteinRangeOben);
+                    do
+	                {
+        	             _feld[x, y] = BrettLogik.GenerateRandomNumber(SpielsteinRangeUnten, SpielsteinRangeOben);
+                        // jetzt das Feld prüfen -> es darf keiner 3er Gruppen geben, wenn doch muss eine neue Nummer genertiert werden.
+                        dreier = BrettLogik.AlleDreierZuKoordinate(new Koordinate(x + 1, y + 1));
+                        enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(dreier, this);
+	                } while (enumDreierSelberSpielstein.Count<IDreier>() > 0);
+                    
                 }
             }
         }
@@ -58,34 +72,54 @@ namespace TRausch.Logik
             IEnumerable<IDreier> enumDreier;
             IEnumerable<IDreier> enumDreierSelberSpielstein;
             List<IKoordinatenpaar> lstKoordinatenpaar = new List<IKoordinatenpaar>();
+            Brett tauschBrett;
 
-            enumKoordinatenpaare = BrettLogik.AlleKoordinatenpaare(this);
+            // jetzt aus static herausholen
+            //enumKoordinatenpaare = BrettLogik.AlleKoordinatenpaare(this);
+            enumKoordinatenpaare = BrettLogik.getAlleKoordinatenPaare;
+
 
             foreach (var kPaar in enumKoordinatenpaare)
 	        {
-                enumDreier = BrettLogik.AlleDreierZuKoordinatenpaar(kPaar);
-                enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(enumDreier, this);
-                kPaar.AnzahlDreier = enumDreierSelberSpielstein.Count();
+                try
+                {
+                    tauschBrett = new Brett(this);
 
-                if (lstKoordinatenpaar.Capacity == 0)
-                {
-                    lstKoordinatenpaar.Add(kPaar);
-                }
-                else
-                {
-                    if (lstKoordinatenpaar.ElementAt(0).AnzahlDreier < kPaar.AnzahlDreier)
+                    // aus Property herausholen 
+                    //enumDreier = BrettLogik.AlleDreierZuKoordinatenpaar(kPaar);
+                    enumDreier = kPaar.AlleDreierZuKoordinatenpaar;
+                    
+                    enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(enumDreier, tauschBrett);
+                    kPaar.AnzahlDreier = enumDreierSelberSpielstein.Count();
+
+                    if (lstKoordinatenpaar.Capacity == 0)
                     {
-                        lstKoordinatenpaar.Insert(0, kPaar);
+                        lstKoordinatenpaar.Add(kPaar);
                     }
                     else
                     {
-                        lstKoordinatenpaar.Insert(1, kPaar);
+                        if (lstKoordinatenpaar.ElementAt(0).AnzahlDreier < kPaar.AnzahlDreier)
+                        {
+                            lstKoordinatenpaar.Insert(0, kPaar);
+                        }
+                        else
+                        {
+                            lstKoordinatenpaar.Insert(1, kPaar);
+                        }
                     }
+
                 }
-                
+                catch (IndexOutOfRangeException e)
+                {
+                    // weiter
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
 	        }
 
-            return lstKoordinatenpaar.Max<IKoordinatenpaar>();
+            return lstKoordinatenpaar.ElementAt(0);
         }
         //public int Gewinner()
         //{

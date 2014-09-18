@@ -15,8 +15,14 @@ namespace TRausch.App
 
             Console.Write(tController.getSpielbrettToString());
 
-            tController.SucheKoordinatenpaar();
+            Console.WriteLine(tController.SucheKoordinatenpaar().ToString());
 
+
+
+
+            Console.WriteLine(tController.SucheKoordinatenpaar().ToString());
+
+            Console.WriteLine(tController.SucheKoordinatenpaar().ToString());
             Console.Read();
         }
     }

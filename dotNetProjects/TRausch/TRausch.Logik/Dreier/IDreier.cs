@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TRausch.Logik.Dreier
 {
-    interface IDreier
+    public interface IDreier
     {
         Koordinate Eins
         {

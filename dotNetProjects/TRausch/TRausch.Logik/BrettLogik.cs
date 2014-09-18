@@ -11,18 +11,51 @@ namespace TRausch.Logik
 {
     class BrettLogik
     {
+        private static IEnumerable<IKoordinatenpaar> enumAlleKoordinatenpaare;
+        private static Brett brett;
+
+        //Gibt alle Koordinatenpaare zurück, die zuvor in static Variable gespeichert.
+        public static IEnumerable<IKoordinatenpaar> getAlleKoordinatenPaare
+        {
+            get
+            {
+                if (enumAlleKoordinatenpaare == null)
+                {
+                    enumAlleKoordinatenpaare = AlleKoordinatenpaare(brett);
+                }                
+                return enumAlleKoordinatenpaare;
+
+            }
+        }
+
+        public static Brett StaticBrett
+        {
+            set
+            {
+                brett = value;
+            }
+        }
+
         internal static IEnumerable<IKoordinatenpaar> AlleKoordinatenpaare(Brett brett)
         {
             for (var x = 1; x <= Brett.MaxAnzahlSpalten; x++)
             {
                 for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
                 {
-                    yield return new KoordinatenPaarSenkrecht(x, y);
-                    yield return new KoordinatenPaarWaagerecht(x, y);
+                    if (y > 2)
+                    {
+                        yield return new KoordinatenPaarSenkrecht(x, y);
+                    }
+                    
+                    if (x < Brett.MaxAnzahlSpalten)
+                    {
+                        yield return new KoordinatenPaarWaagerecht(x, y);
+                    }
                 }
             }
         }
     
+
         internal static IEnumerable<IDreier> AlleDreierZuKoordinate(Koordinate k)
         {
             yield return new DreierWaagerechtLeftKoordinate(k.X, k.Y);
@@ -77,6 +110,16 @@ namespace TRausch.Logik
                 }
 
             }
+        }
+        
+        // Tauscht die Werte auf einem Brett eines Koordinatenpaars
+        internal static Brett TauscheKoordinatenpaarWertAufBrett(Brett brett, IKoordinatenpaar kPaar)
+        {
+            int Werttmp;
+            Werttmp = brett.getSpielstein(kPaar.Eins);
+            brett.setSpielstein(kPaar.Eins, brett.getSpielstein(kPaar.Zwei));
+            brett.setSpielstein(kPaar.Zwei, Werttmp);
+            return brett;
         }
 
         public static int GenerateRandomNumber(int min, int max)

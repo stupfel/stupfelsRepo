@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TRausch.Logik.Dreier;
 using TRausch.Logik.Koordinaten;
 
 namespace TRausch.Logik
@@ -12,12 +13,14 @@ namespace TRausch.Logik
         Koordinate _k1;
         Koordinate _k2;
         int _AnzahlDreier;
+        IEnumerable<IDreier> _enumAlleDreierZuKoordinatenpaar;
 
         public KoordinatenPaarSenkrecht(Koordinate k1)
         {
             _k1 = k1;
             _k2 = new Koordinate(k1.X, k1.Y - 1);
             _AnzahlDreier = 0;
+            _enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
         }
 
         public KoordinatenPaarSenkrecht(int x, int y)
@@ -25,6 +28,7 @@ namespace TRausch.Logik
             _k1 = new Koordinate(x, y);
             _k2 = new Koordinate(x, y - 1);
             _AnzahlDreier = 0;
+            _enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
         }
 
 
@@ -42,6 +46,16 @@ namespace TRausch.Logik
         {
             get { return _AnzahlDreier; }
             set { _AnzahlDreier = value; }
+        }
+
+        public IEnumerable<IDreier> AlleDreierZuKoordinatenpaar
+        {
+            get { return _enumAlleDreierZuKoordinatenpaar; }
+        }
+
+        public override string ToString()
+        {
+            return ("K1: " + _k1.ToString() + "  K2: " + _k2.ToString());
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TRausch.Logik.Dreier;
 
 namespace TRausch.Logik.Koordinaten
 {
@@ -22,6 +23,11 @@ namespace TRausch.Logik.Koordinaten
         {
             get;
             set;
+        }
+
+        IEnumerable<IDreier> AlleDreierZuKoordinatenpaar
+        {
+            get;
         }
     }
 }

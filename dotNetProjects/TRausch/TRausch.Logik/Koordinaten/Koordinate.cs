@@ -26,5 +26,10 @@ namespace TRausch.Logik
         {
             get { return _y; }
         }
+
+        public override string ToString()
+        {
+            return ("X:" + _x + " Y:" + _y);
+        }
     }
 }

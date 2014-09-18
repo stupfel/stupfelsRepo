@@ -17,6 +17,7 @@ namespace TRausch.Logik
         public void initialisiereSpiel()
         {
             brett = new Brett();
+            BrettLogik.StaticBrett = brett;
         }
 
         public string getSpielbrettToString()
