@@ -11,8 +11,8 @@ namespace TRausch.Logik
     public class Brett
     {
         //das Spielbrett
-        public const int MaxAnzahlReihen = 20;
-        public const int MaxAnzahlSpalten = 20;
+        public const int MaxAnzahlReihen = 8;
+        public const int MaxAnzahlSpalten = 8;
 
         private const int SpielsteinRangeUnten = 1;
         private const int SpielsteinRangeOben = 7;
@@ -71,6 +71,8 @@ namespace TRausch.Logik
             // 1. Liste von allen möglichen Koordinatenpaaren erzeugen.
             // 2. Jede Koordinate im Paar auf mögliche Dreier überprüfen. Die Anzahl an gefundenen Dreiern pro Paar merken.
             // 3. Das Paar mit den meisten Dreiern hat gewonnen und wird zurückgegeben.
+            Console.WriteLine("Start SucheKoordinatenpaar");
+
             IEnumerable<IKoordinatenpaar> enumKoordinatenpaare;
             List<IKoordinatenpaar> listKoordinatenpaare;
 

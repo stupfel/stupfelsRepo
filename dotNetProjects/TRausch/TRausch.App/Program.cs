@@ -11,18 +11,27 @@ namespace TRausch.App
         static void Main(string[] args)
         {
             TRausch.Logik.TRauschController tController = new Logik.TRauschController();
+
             tController.initialisiereSpiel();
-
             Console.Write(tController.getSpielbrettToString());
-
             Console.WriteLine(tController.SucheKoordinatenpaar().ToString());
 
-
-
-
+            tController.initialisiereSpiel();
+            Console.Write(tController.getSpielbrettToString());
             Console.WriteLine(tController.SucheKoordinatenpaar().ToString());
 
+            tController.initialisiereSpiel();
+            Console.Write(tController.getSpielbrettToString());
             Console.WriteLine(tController.SucheKoordinatenpaar().ToString());
+
+            tController.initialisiereSpiel();
+            Console.Write(tController.getSpielbrettToString());
+            Console.WriteLine(tController.SucheKoordinatenpaar().ToString());
+
+            tController.initialisiereSpiel();
+            Console.Write(tController.getSpielbrettToString());
+            Console.WriteLine(tController.SucheKoordinatenpaar().ToString());
+
             Console.Read();
         }
     }
