@@ -11,8 +11,8 @@ namespace TRausch.Logik
     public class Brett
     {
         //das Spielbrett
-        public const int MaxAnzahlReihen = 20;
-        public const int MaxAnzahlSpalten = 20;
+        public const int MaxAnzahlReihen = 8;
+        public const int MaxAnzahlSpalten = 8;
 
         private const int SpielsteinRangeUnten = 1;
         private const int SpielsteinRangeOben = 7;
@@ -39,13 +39,16 @@ namespace TRausch.Logik
                 for (int y = 0; y < MaxAnzahlReihen; y++)
                 {
                     do
-	                {
-        	             _feld[x, y] = BrettLogik.GenerateRandomNumber(SpielsteinRangeUnten, SpielsteinRangeOben);
+                    {
+                        _feld[x, y] = BrettLogik.GenerateRandomNumber(SpielsteinRangeUnten, SpielsteinRangeOben);
                         // jetzt das Feld prüfen -> es darf keiner 3er Gruppen geben, wenn doch muss eine neue Nummer genertiert werden.
                         dreier = BrettLogik.AlleDreierZuKoordinate(new Koordinate(x + 1, y + 1));
                         enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(dreier, this);
-	                } while (enumDreierSelberSpielstein.Count<IDreier>() > 0);
-                    
+                    } while (enumDreierSelberSpielstein.Count<IDreier>() > 0);
+
+                    //_feld[x, y] = 1;
+
+
                 }
             }
         }
@@ -64,34 +67,42 @@ namespace TRausch.Logik
         public IKoordinatenpaar SucheKoordinatenpaar()
         {
             // TODO Koordinaten müssen noch getauscht werden
-
+           
             // 1. Liste von allen möglichen Koordinatenpaaren erzeugen.
             // 2. Jede Koordinate im Paar auf mögliche Dreier überprüfen. Die Anzahl an gefundenen Dreiern pro Paar merken.
             // 3. Das Paar mit den meisten Dreiern hat gewonnen und wird zurückgegeben.
             IEnumerable<IKoordinatenpaar> enumKoordinatenpaare;
+            List<IKoordinatenpaar> listKoordinatenpaare;
+
             IEnumerable<IDreier> enumDreier;
+            List<IDreier> listDreier;
+
             IEnumerable<IDreier> enumDreierSelberSpielstein;
             List<IKoordinatenpaar> lstKoordinatenpaar = new List<IKoordinatenpaar>();
-            Brett tauschBrett;
+            
 
             // jetzt aus static herausholen
             //enumKoordinatenpaare = BrettLogik.AlleKoordinatenpaare(this);
-            enumKoordinatenpaare = BrettLogik.getAlleKoordinatenPaare;
-
-
-            foreach (var kPaar in enumKoordinatenpaare)
+            //enumKoordinatenpaare = BrettLogik.getAlleKoordinatenPaare;
+            listKoordinatenpaare = BrettLogik.getAlleKoordinatenPaareAsList;
+            
+            //foreach (var kPaar in enumKoordinatenpaare)
+            foreach (var kPaar in listKoordinatenpaare)
 	        {
                 try
                 {
-                    tauschBrett = new Brett(this);
+                    
+                    TauscheKoordinatenWerte(kPaar.Eins, kPaar.Zwei);
 
                     // aus Property herausholen 
                     //enumDreier = BrettLogik.AlleDreierZuKoordinatenpaar(kPaar);
-                    enumDreier = kPaar.AlleDreierZuKoordinatenpaar;
+                    //enumDreier = kPaar.AlleDreierZuKoordinatenpaar;
+                    listDreier = kPaar.AlleDreierZuKoordinatenpaarAsList;
+                   
+                    //enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(enumDreier, tauschBrett);
+                    //kPaar.AnzahlDreier = enumDreierSelberSpielstein.Count();
+                    kPaar.AnzahlDreier = BrettLogik.SelberSpielsteinCount(listDreier, this);
                     
-                    enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(enumDreier, tauschBrett);
-                    kPaar.AnzahlDreier = enumDreierSelberSpielstein.Count();
-
                     if (lstKoordinatenpaar.Capacity == 0)
                     {
                         lstKoordinatenpaar.Add(kPaar);
@@ -107,6 +118,7 @@ namespace TRausch.Logik
                             lstKoordinatenpaar.Insert(1, kPaar);
                         }
                     }
+                    TauscheKoordinatenWerte(kPaar.Eins, kPaar.Zwei);
 
                 }
                 catch (IndexOutOfRangeException e)
@@ -117,6 +129,7 @@ namespace TRausch.Logik
                 {
                     throw;
                 }
+                
 	        }
 
             return lstKoordinatenpaar.ElementAt(0);
@@ -164,6 +177,26 @@ namespace TRausch.Logik
 
                 throw new IndexOutOfRangeException();
             }
+        }
+        public int getSpielstein(int x, int y)
+        {
+            try
+            {
+                return _feld[x - 1, y - 1];
+            }
+            catch (Exception)
+            {
+
+                throw new IndexOutOfRangeException();
+            }
+        }
+
+        public void TauscheKoordinatenWerte(Koordinate k1, Koordinate k2)
+        {
+            int Wert;
+            Wert = this.getSpielstein(k1);
+            this.setSpielstein(k1, this.getSpielstein(k2));
+            this.setSpielstein(k2, Wert);
         }
 
         public string getBrettAsString()

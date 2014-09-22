@@ -12,6 +12,7 @@ namespace TRausch.Logik
     class BrettLogik
     {
         private static IEnumerable<IKoordinatenpaar> enumAlleKoordinatenpaare;
+        private static List<IKoordinatenpaar> listAlleKoordinatenpaare;
         private static Brett brett;
 
         //Gibt alle Koordinatenpaare zurück, die zuvor in static Variable gespeichert.
@@ -24,6 +25,18 @@ namespace TRausch.Logik
                     enumAlleKoordinatenpaare = AlleKoordinatenpaare(brett);
                 }                
                 return enumAlleKoordinatenpaare;
+
+            }
+        }
+        public static List<IKoordinatenpaar> getAlleKoordinatenPaareAsList
+        {
+            get
+            {
+                if (listAlleKoordinatenpaare == null)
+                {
+                    listAlleKoordinatenpaare = AlleKoordinatenpaareAsList(brett);
+                }
+                return listAlleKoordinatenpaare;
 
             }
         }
@@ -54,7 +67,26 @@ namespace TRausch.Logik
                 }
             }
         }
-    
+        internal static List<IKoordinatenpaar> AlleKoordinatenpaareAsList(Brett brett)
+        {
+            List<IKoordinatenpaar> returnList = new List<IKoordinatenpaar>();
+            for (var x = 1; x <= Brett.MaxAnzahlSpalten; x++)
+            {
+                for (var y = 1; y <= Brett.MaxAnzahlReihen; y++)
+                {
+                    if (y > 2)
+                    {
+                        returnList.Add(new KoordinatenPaarSenkrecht(x, y));
+                    }
+
+                    if (x < Brett.MaxAnzahlSpalten)
+                    {
+                        returnList.Add(new KoordinatenPaarWaagerecht(x, y));
+                    }
+                }
+            }
+            return returnList;
+        }
 
         internal static IEnumerable<IDreier> AlleDreierZuKoordinate(Koordinate k)
         {
@@ -64,6 +96,18 @@ namespace TRausch.Logik
             yield return new DreierSenkrechtTopKoordinate(k.X, k.Y);
             yield return new DreierSenkrechtCenterKoordinate(k.X, k.Y);
             yield return new DreierSenkrechtBottomKoordinate(k.X, k.Y);
+        }
+        internal static List<IDreier> AlleDreierZuKoordinateAsList(Koordinate k)
+        {
+            List<IDreier> dreier = new List<IDreier>();
+            dreier.Add(new DreierWaagerechtLeftKoordinate(k.X, k.Y));
+            //yield return new DreierWaagerechtLeftKoordinate(k.X, k.Y);
+            //yield return new DreierWaagerechtCenterKoordinate(k.X, k.Y);
+            //yield return new DreierWaagerechtRightKoordinate(k.X, k.Y);
+            //yield return new DreierSenkrechtTopKoordinate(k.X, k.Y);
+            //yield return new DreierSenkrechtCenterKoordinate(k.X, k.Y);
+            //yield return new DreierSenkrechtBottomKoordinate(k.X, k.Y);
+            return dreier;
         }
         internal static IEnumerable<IDreier> AlleDreierZuKoordinatenpaar(IKoordinatenpaar kPaar)
         {
@@ -81,6 +125,27 @@ namespace TRausch.Logik
                 yield return drei;
             }
         }
+        internal static List<IDreier> AlleDreierZuKoordinatenpaarAsList(IKoordinatenpaar kPaar)
+        {
+            //yield return AlleDreierZuKoordinate(kPaar.Eins);
+            //yield return AlleDreierZuKoordinate(kPaar.Zwei);
+            List<IDreier> dreier = new List<IDreier>();
+            dreier.Add(new DreierWaagerechtLeftKoordinate(kPaar.Eins.X, kPaar.Eins.Y));
+            dreier.Add(new DreierWaagerechtCenterKoordinate(kPaar.Eins.X, kPaar.Eins.Y));
+            dreier.Add(new DreierWaagerechtRightKoordinate(kPaar.Eins.X, kPaar.Eins.Y));
+            dreier.Add(new DreierSenkrechtTopKoordinate(kPaar.Eins.X, kPaar.Eins.Y));
+            dreier.Add(new DreierSenkrechtCenterKoordinate(kPaar.Eins.X, kPaar.Eins.Y));
+            dreier.Add(new DreierSenkrechtBottomKoordinate(kPaar.Eins.X, kPaar.Eins.Y));
+
+            dreier.Add(new DreierWaagerechtLeftKoordinate(kPaar.Zwei.X, kPaar.Zwei.Y));
+            dreier.Add(new DreierWaagerechtCenterKoordinate(kPaar.Zwei.X, kPaar.Zwei.Y));
+            dreier.Add(new DreierWaagerechtRightKoordinate(kPaar.Zwei.X, kPaar.Zwei.Y));
+            dreier.Add(new DreierSenkrechtTopKoordinate(kPaar.Zwei.X, kPaar.Zwei.Y));
+            dreier.Add(new DreierSenkrechtCenterKoordinate(kPaar.Zwei.X, kPaar.Zwei.Y));
+            dreier.Add(new DreierSenkrechtBottomKoordinate(kPaar.Zwei.X, kPaar.Zwei.Y));
+            return dreier;
+        }
+
         // Bekommt eine Liste von Dreiern. Diese Dreier werden überprüft.
         // Jeder Dreier der dessen Spielsteine gleich sind wird zurückgegeben.
         // Es sollten also immer die Dreier zu eier Koordinate bzw. einem Koordinatenpaar übergeben werden.
@@ -88,8 +153,10 @@ namespace TRausch.Logik
         internal static IEnumerable<IDreier> SelberSpielstein(IEnumerable<IDreier> dreier, Brett brett)
         {
             bool hasDreierSelbeFarbe;
-            foreach (var drei in dreier)
+            IDreier drei;
+            for (int x = 0; x < dreier.Count(); x++)
             {
+                drei = dreier.ElementAt(x);
                 hasDreierSelbeFarbe = false;
                 try
                 {
@@ -111,7 +178,74 @@ namespace TRausch.Logik
 
             }
         }
-        
+        internal static int SelberSpielsteinCount_Backup(List<IDreier> dreier, Brett brett)
+        {
+            int Count = 0;
+            bool hasDreierSelbeFarbe;
+            //TimeLog.TimeStop("1");
+            foreach (var drei in dreier)
+            {
+                hasDreierSelbeFarbe = false;
+                try
+                {
+                    TimeLog.TimeStop("1");
+                    if ((brett.getSpielstein(drei.Eins) != 0) &&
+                       (brett.getSpielstein(drei.Eins) == brett.getSpielstein(drei.Zwei)) &&
+                       (brett.getSpielstein(drei.Eins) == brett.getSpielstein(drei.Drei)))
+                    {
+                        hasDreierSelbeFarbe = true;
+                    }
+                    TimeLog.TimeStop("2");
+                    break;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    hasDreierSelbeFarbe = false;
+                }
+                if (hasDreierSelbeFarbe)
+                {
+                    Count++;
+                }
+            }
+            //TimeLog.TimeStop("2");
+            return Count;
+        }
+        internal static int SelberSpielsteinCount(List<IDreier> dreier, Brett brett)
+        {
+            int Count = 0;
+            bool hasDreierSelbeFarbe;
+            //TimeLog.TimeStop("1");
+            IDreier drei;
+            for (int x = 0; x < dreier.Count(); x++)
+            {
+                drei = dreier.ElementAt(x);
+                hasDreierSelbeFarbe = false;
+                try
+                {
+                    TimeLog.TimeStop("1");
+                    //if (brett.getSpielstein(drei.Eins) == brett.getSpielstein(drei.Zwei))// && 
+                    //   //(brett.getSpielstein(drei.Eins) == brett.getSpielstein(drei.Drei)))
+                    //{
+                    if (1 == 1 && 1 == 2)
+                    {
+                        hasDreierSelbeFarbe = true;
+                    }
+                    TimeLog.TimeStop("2");
+                    break;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    hasDreierSelbeFarbe = false;
+                }
+                if (hasDreierSelbeFarbe)
+                {
+                    Count++;
+                }
+            }
+            //TimeLog.TimeStop("2");
+            return Count;
+        }
+
         // Tauscht die Werte auf einem Brett eines Koordinatenpaars
         internal static Brett TauscheKoordinatenpaarWertAufBrett(Brett brett, IKoordinatenpaar kPaar)
         {
@@ -120,6 +254,83 @@ namespace TRausch.Logik
             brett.setSpielstein(kPaar.Eins, brett.getSpielstein(kPaar.Zwei));
             brett.setSpielstein(kPaar.Zwei, Werttmp);
             return brett;
+        }
+
+        internal static int CountWaagerechtLinksSelbeFarbe(Brett brett, Koordinate k, int Farbe)
+        {
+            // zählt die anzahl an selber Farbe links ab Koordinate, verwendet aber übergebene Farbe zur Prüfung
+            int iReturnValue = 0;
+            for (int x = k.X - 1; x > 0; x--)
+            {
+                if (brett.getSpielstein(x, k.Y) == Farbe)
+                {
+                    iReturnValue++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return iReturnValue;
+        }
+        internal static int CountWaagerechtRechtsSelbeFarbe(Brett brett, Koordinate k, int Farbe)
+        {
+            // zählt die anzahl an selber Farbe links ab Koordinate, verwendet aber übergebene Farbe zur Prüfung
+            int iReturnValue = 0;
+            for (int x = k.X + 1; x <= Brett.MaxAnzahlSpalten; x++)
+            {
+                if (brett.getSpielstein(x, k.Y) == Farbe)
+                {
+                    iReturnValue++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return iReturnValue;
+        }
+        internal static int CountSenkrechtObenSelbeFarbe(Brett brett, Koordinate k, int Farbe)
+        {
+            // zählt die anzahl an selber Farbe links ab Koordinate, verwendet aber übergebene Farbe zur Prüfung
+            int iReturnValue = 0;
+            for (int y = k.Y + 1; y <= Brett.MaxAnzahlReihen; y++)
+            {
+                if (brett.getSpielstein(y, k.Y) == Farbe)
+                {
+                    iReturnValue++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return iReturnValue;
+        }
+        internal static int CountSenkrechtUntenSelbeFarbe(Brett brett, Koordinate k, int Farbe)
+        {
+            // zählt die anzahl an selber Farbe links ab Koordinate, verwendet aber übergebene Farbe zur Prüfung
+            int iReturnValue = 0;
+            for (int y = k.Y - 1; y > 0; y--)
+            {
+                if (brett.getSpielstein(y, k.Y) == Farbe)
+                {
+                    iReturnValue++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return iReturnValue;
+        }
+
+        internal static int CountSelbeFarbeZuKoordinate(Brett brett, Koordinate k, int Farbe)
+        {
+            return CountWaagerechtLinksSelbeFarbe(brett, k, Farbe) +
+                   CountWaagerechtRechtsSelbeFarbe(brett, k, Farbe) +
+                   CountSenkrechtObenSelbeFarbe(brett, k, Farbe) +
+                   CountSenkrechtUntenSelbeFarbe(brett, k, Farbe);
         }
 
         public static int GenerateRandomNumber(int min, int max)

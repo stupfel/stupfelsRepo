@@ -14,13 +14,15 @@ namespace TRausch.Logik
         Koordinate _k2;
         int _AnzahlDreier;
         IEnumerable<IDreier> _enumAlleDreierZuKoordinatenpaar;
+        List<IDreier> _listAlleDreierZuKoordinatenpaar;
 
         public KoordinatenPaarSenkrecht(Koordinate k1)
         {
             _k1 = k1;
             _k2 = new Koordinate(k1.X, k1.Y - 1);
             _AnzahlDreier = 0;
-            _enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
+            //_enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
+            _listAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaarAsList(this);
         }
 
         public KoordinatenPaarSenkrecht(int x, int y)
@@ -28,7 +30,8 @@ namespace TRausch.Logik
             _k1 = new Koordinate(x, y);
             _k2 = new Koordinate(x, y - 1);
             _AnzahlDreier = 0;
-            _enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
+            //_enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
+            _listAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaarAsList(this);
         }
 
 
@@ -51,6 +54,11 @@ namespace TRausch.Logik
         public IEnumerable<IDreier> AlleDreierZuKoordinatenpaar
         {
             get { return _enumAlleDreierZuKoordinatenpaar; }
+        }
+
+        public List<IDreier> AlleDreierZuKoordinatenpaarAsList
+        {
+            get { return _listAlleDreierZuKoordinatenpaar; }
         }
 
         public override string ToString()

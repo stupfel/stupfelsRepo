@@ -14,19 +14,22 @@ namespace TRausch.Logik
         Koordinate _k2;
         int _AnzahlDreier;
         IEnumerable<IDreier> _enumAlleDreierZuKoordinatenpaar;
+        List<IDreier> _listAlleDreierZuKoordinatenpaar;
 
         public KoordinatenPaarWaagerecht(Koordinate k1)
         {
             _k1 = k1;
             _k2 = new Koordinate(k1.X + 1, k1.Y);
-            _enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
+            //_enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
+            _listAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaarAsList(this);
         }
 
         public KoordinatenPaarWaagerecht(int x, int y)
         {
             _k1 = new Koordinate(x,y);
             _k2 = new Koordinate(x + 1, y);
-            _enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
+            //_enumAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaar(this);
+            _listAlleDreierZuKoordinatenpaar = BrettLogik.AlleDreierZuKoordinatenpaarAsList(this);
         }
 
         public Koordinate Eins
@@ -48,6 +51,11 @@ namespace TRausch.Logik
         public IEnumerable<IDreier> AlleDreierZuKoordinatenpaar
         {
             get { return _enumAlleDreierZuKoordinatenpaar; }
+        }
+
+        public List<IDreier> AlleDreierZuKoordinatenpaarAsList
+        {
+            get { return _listAlleDreierZuKoordinatenpaar; }
         }
 
         public override string ToString()

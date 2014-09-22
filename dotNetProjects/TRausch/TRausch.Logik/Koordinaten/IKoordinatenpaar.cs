@@ -29,5 +29,10 @@ namespace TRausch.Logik.Koordinaten
         {
             get;
         }
+
+        List<IDreier> AlleDreierZuKoordinatenpaarAsList
+        {
+            get;
+        }
     }
 }

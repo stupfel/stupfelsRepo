@@ -54,6 +54,7 @@
     <Compile Include="Koordinaten\Koordinate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spielstein.cs" />
+    <Compile Include="TimeLog.cs" />
     <Compile Include="TRauschController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
