@@ -325,12 +325,39 @@ namespace TRausch.Logik
             return iReturnValue;
         }
 
+        internal static int CountWaagerechtSelbeFarbe(Brett brett, Koordinate k, int Farbe)
+        {
+            int value = 1 + CountWaagerechtLinksSelbeFarbe(brett, k, Farbe) + CountWaagerechtRechtsSelbeFarbe(brett, k, Farbe);
+            if (value >= 3)
+            {
+                return value;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        internal static int CountSenkrechtSelbeFarbe(Brett brett, Koordinate k, int Farbe)
+        {
+            int value = 1 + CountSenkrechtObenSelbeFarbe(brett, k, Farbe) + CountSenkrechtUntenSelbeFarbe(brett, k, Farbe);
+            if (value >= 3)
+            {
+                return value;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         internal static int CountSelbeFarbeZuKoordinate(Brett brett, Koordinate k, int Farbe)
         {
-            return CountWaagerechtLinksSelbeFarbe(brett, k, Farbe) +
-                   CountWaagerechtRechtsSelbeFarbe(brett, k, Farbe) +
-                   CountSenkrechtObenSelbeFarbe(brett, k, Farbe) +
-                   CountSenkrechtUntenSelbeFarbe(brett, k, Farbe);
+            return CountWaagerechtSelbeFarbe(brett, k, Farbe) +
+                   CountSenkrechtSelbeFarbe(brett, k, Farbe);
+        }
+        internal static int CountSelbeFarbeZuKoordinatenpaar(Brett brett, IKoordinatenpaar kPaar, int farbe1, int farbe2)
+        {
+            return CountSelbeFarbeZuKoordinate(brett, kPaar.Eins, farbe1) + CountSelbeFarbeZuKoordinate(brett, kPaar.Zwei, farbe2);
         }
 
         public static int GenerateRandomNumber(int min, int max)

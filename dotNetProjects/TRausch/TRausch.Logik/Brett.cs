@@ -11,8 +11,8 @@ namespace TRausch.Logik
     public class Brett
     {
         //das Spielbrett
-        public const int MaxAnzahlReihen = 8;
-        public const int MaxAnzahlSpalten = 8;
+        public const int MaxAnzahlReihen = 20;
+        public const int MaxAnzahlSpalten = 20;
 
         private const int SpielsteinRangeUnten = 1;
         private const int SpielsteinRangeOben = 7;
@@ -91,18 +91,24 @@ namespace TRausch.Logik
 	        {
                 try
                 {
-                    
-                    TauscheKoordinatenWerte(kPaar.Eins, kPaar.Zwei);
+                    if (getSpielstein(kPaar.Eins) != getSpielstein(kPaar.Zwei))
+                    { 
+                        TauscheKoordinatenWerte(kPaar.Eins, kPaar.Zwei);
 
-                    // aus Property herausholen 
-                    //enumDreier = BrettLogik.AlleDreierZuKoordinatenpaar(kPaar);
-                    //enumDreier = kPaar.AlleDreierZuKoordinatenpaar;
-                    listDreier = kPaar.AlleDreierZuKoordinatenpaarAsList;
+                        // aus Property herausholen 
+                        //enumDreier = BrettLogik.AlleDreierZuKoordinatenpaar(kPaar);
+                        //enumDreier = kPaar.AlleDreierZuKoordinatenpaar;
+                        listDreier = kPaar.AlleDreierZuKoordinatenpaarAsList;
                    
-                    //enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(enumDreier, tauschBrett);
-                    //kPaar.AnzahlDreier = enumDreierSelberSpielstein.Count();
-                    kPaar.AnzahlDreier = BrettLogik.SelberSpielsteinCount(listDreier, this);
-                    
+                        //enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(enumDreier, tauschBrett);
+                        //kPaar.AnzahlDreier = enumDreierSelberSpielstein.Count();
+                        //kPaar.AnzahlDreier = BrettLogik.SelberSpielsteinCount(listDreier, this);
+                        kPaar.AnzahlDreier = BrettLogik.CountSelbeFarbeZuKoordinatenpaar(this, kPaar, getSpielstein(kPaar.Eins), getSpielstein(kPaar.Zwei));
+                    }
+                    else
+                    {
+                        kPaar.AnzahlDreier = 0;
+                    }
                     if (lstKoordinatenpaar.Capacity == 0)
                     {
                         lstKoordinatenpaar.Add(kPaar);
