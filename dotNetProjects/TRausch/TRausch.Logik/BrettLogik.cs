@@ -296,7 +296,7 @@ namespace TRausch.Logik
             int iReturnValue = 0;
             for (int y = k.Y + 1; y <= Brett.MaxAnzahlReihen; y++)
             {
-                if (brett.getSpielstein(y, k.Y) == Farbe)
+                if (brett.getSpielstein(k.X, y) == Farbe)
                 {
                     iReturnValue++;
                 }
@@ -313,7 +313,7 @@ namespace TRausch.Logik
             int iReturnValue = 0;
             for (int y = k.Y - 1; y > 0; y--)
             {
-                if (brett.getSpielstein(y, k.Y) == Farbe)
+                if (brett.getSpielstein(k.X, y) == Farbe)
                 {
                     iReturnValue++;
                 }
@@ -358,6 +358,86 @@ namespace TRausch.Logik
         internal static int CountSelbeFarbeZuKoordinatenpaar(Brett brett, IKoordinatenpaar kPaar, int farbe1, int farbe2)
         {
             return CountSelbeFarbeZuKoordinate(brett, kPaar.Eins, farbe1) + CountSelbeFarbeZuKoordinate(brett, kPaar.Zwei, farbe2);
+        }
+
+        public static void KoordinatenpaarTauschenUndLoeschen(Brett brett, IKoordinatenpaar kPaar)
+        {
+            // ein Koordinatenpaar tauschen und die angrenzenden gleichen Felder erstmal nur mit 0 auffüllen.
+            brett.TauscheKoordinatenWerte(kPaar.Eins, kPaar.Zwei);
+            // nach links
+            KoordinateLoeschen(brett, kPaar.Eins);
+            KoordinateLoeschen(brett, kPaar.Zwei);
+        }
+        internal static void KoordinateLoeschen(Brett brett, Koordinate k)
+        {
+            bool isLoeschen = false;
+            int iFarbe;
+            iFarbe = brett.getSpielstein(k);
+
+            if (CountWaagerechtSelbeFarbe(brett, k, iFarbe) >= 3)
+            {
+                for (int x = k.X - 1; x > 0; x--)
+                {
+                    if (brett.getSpielstein(x, k.Y) == iFarbe)
+                    {
+                        brett.setSpielstein(x, k.Y, 0);
+                        isLoeschen = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                for (int x = k.X + 1; x <= Brett.MaxAnzahlSpalten; x++)
+                {
+                    if (brett.getSpielstein(x, k.Y) == iFarbe)
+                    {
+                        brett.setSpielstein(x, k.Y, 0);
+                        isLoeschen = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+           
+            if (CountSenkrechtSelbeFarbe(brett, k, iFarbe) >= 3)
+            {
+                for (int y = k.Y + 1; y <= Brett.MaxAnzahlReihen; y++)
+                {
+                    if (brett.getSpielstein(k.X, y) == iFarbe)
+                    {
+                        brett.setSpielstein(k.X, y, 0);
+                        isLoeschen = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                for (int y = k.Y - 1; y > 0; y--)
+                {
+                    if (brett.getSpielstein(k.X, y) == iFarbe)
+                    {
+                        brett.setSpielstein(k.X, y, 0);
+                        isLoeschen = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (isLoeschen)
+            {
+                brett.setSpielstein(k.X, k.Y, 0);
+            }
+            
         }
 
         public static int GenerateRandomNumber(int min, int max)

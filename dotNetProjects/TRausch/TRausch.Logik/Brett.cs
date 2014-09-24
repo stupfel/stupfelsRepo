@@ -174,6 +174,18 @@ namespace TRausch.Logik
             }
         }
 
+        public void setSpielstein(int x, int y, int iFarbe)
+        {
+            try
+            {
+                _feld[x - 1, y - 1] = iFarbe;
+            }
+            catch (Exception)
+            {
+                throw new IndexOutOfRangeException();
+            }
+        }
+
         public int getSpielstein(Koordinate koordinate)
         {
             try

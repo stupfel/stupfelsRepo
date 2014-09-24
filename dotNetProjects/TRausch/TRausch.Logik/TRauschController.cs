@@ -25,6 +25,11 @@ namespace TRausch.Logik
             return brett.getBrettAsString();
         }
 
+        public void LoescheKoordinatenpaar()
+        {
+            BrettLogik.KoordinatenpaarTauschenUndLoeschen(brett, brett.SucheKoordinatenpaar());
+        }
+
         public string SucheKoordinatenpaar()
         {
             return brett.SucheKoordinatenpaar().ToString();
