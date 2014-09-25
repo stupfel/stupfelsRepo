@@ -454,5 +454,8 @@ namespace TRausch.Logik
             // gefügt
             return result % max + min;
         }
+    
+        
+    
     }
 }

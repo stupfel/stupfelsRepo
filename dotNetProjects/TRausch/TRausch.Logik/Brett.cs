@@ -53,6 +53,42 @@ namespace TRausch.Logik
             }
         }
 
+        private void FuelleBrett()
+        {
+            // Steine fallen von oben nach unten
+            //
+            // 01
+            // 00
+            // 11
+
+            for (int x = 0; x < MaxAnzahlSpalten; x++)
+            {
+                for (int y = 0; y < MaxAnzahlReihen; y++)
+                {
+                    if (_feld[x, y] == 0)
+                    {
+
+                    }
+
+
+
+
+                    do
+                    {
+                        //_feld[x, y] = BrettLogik.GenerateRandomNumber(SpielsteinRangeUnten, SpielsteinRangeOben);
+                        //// jetzt das Feld prüfen -> es darf keiner 3er Gruppen geben, wenn doch muss eine neue Nummer genertiert werden.
+                        //dreier = BrettLogik.AlleDreierZuKoordinate(new Koordinate(x + 1, y + 1));
+                        //enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(dreier, this);
+                    } while (enumDreierSelberSpielstein.Count<IDreier>() > 0);
+
+                    //_feld[x, y] = 1;
+
+
+                }
+            }
+        }
+
+
         //// Erzeugt Spielsteine in der vorgegebenen Range
         //private int getNextRandomSpielstein()
         //{
