@@ -53,10 +53,11 @@ namespace TRausch.Logik
             }
         }
 
-        private void FuelleBrett()
+        public void FuelleBrett()
         {
             // Steine fallen von oben nach unten
-            //
+            // -> von unten nach oben prüfen und 0er Fallen lassen
+
             // 01
             // 00
             // 11
@@ -67,27 +68,33 @@ namespace TRausch.Logik
                 {
                     if (_feld[x, y] == 0)
                     {
-
+                        // verschiebt eine Spalte 1 mal - füllt den obersten Wert mit Random.
+                        this.SpalteFallenLassenAbPosition(x, y);
                     }
-
-
-
-
-                    do
-                    {
-                        //_feld[x, y] = BrettLogik.GenerateRandomNumber(SpielsteinRangeUnten, SpielsteinRangeOben);
-                        //// jetzt das Feld prüfen -> es darf keiner 3er Gruppen geben, wenn doch muss eine neue Nummer genertiert werden.
-                        //dreier = BrettLogik.AlleDreierZuKoordinate(new Koordinate(x + 1, y + 1));
-                        //enumDreierSelberSpielstein = BrettLogik.SelberSpielstein(dreier, this);
-                    } while (enumDreierSelberSpielstein.Count<IDreier>() > 0);
-
-                    //_feld[x, y] = 1;
-
-
                 }
             }
         }
 
+        private void SpalteFallenLassenAbPosition(int xSpalte, int yReihe)
+        {
+            // Lässt ab Pos xSpalte/yReihe diesen Spielstein verschwinden sollte eine 0 sein
+            // und füllt einmal mit den oberen auf
+
+            for (int y = yReihe; y < MaxAnzahlReihen; y++)
+            {
+                if (y + 1 == MaxAnzahlReihen)
+                {
+                    // das oberste Feld mit Random füllen
+                    _feld[xSpalte, y] = BrettLogik.GenerateRandomNumber(SpielsteinRangeUnten, SpielsteinRangeOben);
+                }
+                else
+                {
+                    // das aktuelle Feld mit dem Wert darüber auffüllen
+                    _feld[xSpalte, y] = _feld[xSpalte, y + 1];
+                }
+            }
+
+        }
 
         //// Erzeugt Spielsteine in der vorgegebenen Range
         //private int getNextRandomSpielstein()

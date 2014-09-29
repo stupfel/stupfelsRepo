@@ -367,6 +367,9 @@ namespace TRausch.Logik
             // nach links
             KoordinateLoeschen(brett, kPaar.Eins);
             KoordinateLoeschen(brett, kPaar.Zwei);
+
+            // füllt wieder auf
+            brett.FuelleBrett();
         }
         internal static void KoordinateLoeschen(Brett brett, Koordinate k)
         {
