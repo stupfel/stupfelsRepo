@@ -1,16 +1,21 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Regatta.Logik
 {
-    class Yacht
+    public class Yacht
     {
+        private int _id;
+        private RegattaBrett _Brett;
         private Position _position;
 
         private RegattaLogik.Windrichtung _richtung;
         private bool _spinnackerAktiv;
-        private byte _AnzahlBoeen;
+        private int _AnzahlBoeen;
 
-        public Yacht(int x, int y, RegattaLogik.Windrichtung richtung)
+        public Yacht(int id, RegattaBrett Brett, int x, int y, RegattaLogik.Windrichtung richtung)
         {
+            _id = id;
+            _Brett = Brett;
             _position = new Position(x, y);
             _richtung = richtung;
             _spinnackerAktiv = false;
@@ -49,5 +54,188 @@ namespace Regatta.Logik
             }
         }
 
+        // segelt
+        public void segeln(RegattaLogik.Richtung Segelrichtung, RegattaLogik.Windrichtung windrichtung, bool BoeeNutzen)
+        {
+            int AnzahlFelder = 0;
+
+            switch (getWindwinkel(windrichtung))
+            {
+                case RegattaLogik.Windwinkel.Gegenwind:
+                    break;
+                case RegattaLogik.Windwinkel.SchraegVorne:
+                    AnzahlFelder = AnzahlFelder + 1;
+                    break;
+                case RegattaLogik.Windwinkel.Seitlich:
+                    AnzahlFelder = AnzahlFelder + 2;
+                    break;
+                case RegattaLogik.Windwinkel.SchraegHinten:
+                    AnzahlFelder = AnzahlFelder + 3;
+                    break;
+                case RegattaLogik.Windwinkel.Hinten:
+                    AnzahlFelder = AnzahlFelder + 2;
+                    break;
+                default:
+                    break;
+            }
+
+            if (BoeeNutzen)
+            {
+                AnzahlFelder = AnzahlFelder + 1;
+            }
+
+            if (_spinnackerAktiv)
+            {
+                AnzahlFelder = AnzahlFelder + 1;
+            }
+
+        }
+
+        public void move(int AnzahlFelder)
+        {
+            int dx = 0;
+            int dy = 0;
+
+            int xOld;
+            int yOld;
+
+            IEnumerable<Yacht> Yachten;
+            bool hasColission;
+ 
+            switch (_richtung)
+            {
+                case RegattaLogik.Windrichtung.N:
+                    dy = 1;
+                    break;
+                case RegattaLogik.Windrichtung.NO:
+                    dx = 1;
+                    dy = 1;
+                    break;
+                case RegattaLogik.Windrichtung.O:
+                    dx = 1;
+                    break;
+                case RegattaLogik.Windrichtung.SO:
+                    dx = 1;
+                    dy = -1;
+                    break;
+                case RegattaLogik.Windrichtung.S:
+                    dy = -1;
+                    break;
+                case RegattaLogik.Windrichtung.SW:
+                    dx = -1;
+                    dy = -1;
+                    break;
+                case RegattaLogik.Windrichtung.W:
+                    dx = -1;
+                    break;
+                case RegattaLogik.Windrichtung.NW:
+                    dx = -1;
+                    dy = +1;
+                    break;
+                default:
+                    break;
+            }
+
+            hasColission = false;
+            for (int iFelder = 0; iFelder < AnzahlFelder; iFelder++)
+            {
+                xOld = _position.X;
+                yOld = _position.Y;
+
+                _position.X = _position.X + dx;
+                _position.Y = _position.Y + dy;
+
+                //Kollision?
+                Yachten = _Brett.getYachten();
+                foreach (Yacht Yacht_tmp in Yachten)
+                {
+                    if (!this.Equals(Yacht_tmp))
+                    {
+                        if (this.SamePosition(Yacht_tmp))
+                        {
+                            hasColission = true;
+                            break;
+                        }
+                    }
+                }
+                if (hasColission)
+                {
+                    _position.X = xOld;
+                    _position.Y = yOld;
+                    break;
+                }
+            }
+        }
+
+        public void ZuegeErmitteln()
+        {
+
+        }
+
+        public RegattaLogik.Windwinkel getWindwinkel(RegattaLogik.Windrichtung windrichtung)
+        {
+            return RegattaLogik.BerechneWindwinkel(windrichtung, this);
+        }
+    
+        public void BoeeNutzen()
+        {
+            _AnzahlBoeen = _AnzahlBoeen - 1;
+        }
+
+        public void SpinnackerSetzen()
+        {
+            _spinnackerAktiv = true;
+        }
+
+        public void SpinnackerEinzahlen()
+        {
+            _spinnackerAktiv = false;
+        }
+
+        public bool SamePosition(Yacht y)
+        {
+            // If parameter is null return false:
+            if ((object)y == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (_position.X == y._position.X) && (_position.Y == y._position.Y);
+        }
+
+        public override bool Equals(object obj)
+        {
+            // If parameter is null return false.
+            if (obj == null)
+            {
+                return false;
+            }
+
+            // If parameter cannot be cast to Point return false.
+            Yacht y = obj as Yacht;
+            if ((System.Object)y == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (_position.X == y._position.X) && (_position.Y == y._position.Y) && (_id != y._id);
+        }
+        public bool Equals(Yacht y)
+        {
+            // If parameter is null return false:
+            if ((object)y == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (_position.X == y._position.X) && (_position.Y == y._position.Y) && (_id != y._id);
+        }
+        public override int GetHashCode()
+        {
+            return _position.X ^ _position.Y ^ _id;
+        }
     }
 }

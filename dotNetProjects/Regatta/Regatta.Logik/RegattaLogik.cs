@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Regatta.Logik
 {
     public static class RegattaLogik
@@ -11,6 +6,7 @@ namespace Regatta.Logik
         public enum Richtung
         {
             links,
+            geradeaus,
             rechts
         }
 
@@ -35,7 +31,7 @@ namespace Regatta.Logik
             Hinten
         }
     
-        public Windwinkel BerechneWindwinkel(Windrichtung windrichtung, Yacht yacht)
+        public static Windwinkel BerechneWindwinkel(Windrichtung windrichtung, Yacht yacht)
         {
             Windwinkel winkel = Windwinkel.Hinten;
             Windrose windroseRechts = new Windrose(windrichtung);
