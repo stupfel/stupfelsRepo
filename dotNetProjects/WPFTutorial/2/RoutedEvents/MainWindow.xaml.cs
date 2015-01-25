@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DependencyPropertys
+namespace RoutedEvents
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -25,16 +25,9 @@ namespace DependencyPropertys
             InitializeComponent();
         }
 
-        private void abrufen(object sender, RoutedEventArgs e)
+        private void mdown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show(tb.Text);
-            MessageBox.Show(tb.GetValue(TextBox.TextProperty) + "");
-        }
-
-        private void setzen(object sender, RoutedEventArgs e)
-        {
-            tb.Text = "Guten Tag";
-            tb.SetValue(TextBox.TextProperty, "Guten Tag 2 ");
+            lb.Items.Add(e.RoutedEvent.Name + " " + sender.GetType().Name);
         }
     }
 }

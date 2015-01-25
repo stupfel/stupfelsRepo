@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DependencyPropertys
+namespace AttachedPropertys
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -27,14 +27,12 @@ namespace DependencyPropertys
 
         private void abrufen(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(tb.Text);
-            MessageBox.Show(tb.GetValue(TextBox.TextProperty) + "");
+            MessageBox.Show(b1.GetValue(Canvas.LeftProperty).ToString());
         }
 
         private void setzen(object sender, RoutedEventArgs e)
         {
-            tb.Text = "Guten Tag";
-            tb.SetValue(TextBox.TextProperty, "Guten Tag 2 ");
+            b2.SetValue(Canvas.LeftProperty, Int32.Parse(b2.GetValue(Canvas.LeftProperty).ToString()) + 5.0);
         }
     }
 }

@@ -1,0 +1,9 @@
+﻿<Window x:Class="AttachedPropertys.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Canvas>
+        <Button x:Name="b1" Canvas.Top="20" Canvas.Left="50" Click="abrufen">Inhalt abrufen</Button>
+        <Button x:Name="b2" Canvas.Top="50" Canvas.Left="50" Click="setzen">Inhalt setzen</Button>
+    </Canvas>
+</Window>

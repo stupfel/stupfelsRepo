@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DependencyPropertys
+namespace MarkupExtension
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -23,18 +23,6 @@ namespace DependencyPropertys
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void abrufen(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(tb.Text);
-            MessageBox.Show(tb.GetValue(TextBox.TextProperty) + "");
-        }
-
-        private void setzen(object sender, RoutedEventArgs e)
-        {
-            tb.Text = "Guten Tag";
-            tb.SetValue(TextBox.TextProperty, "Guten Tag 2 ");
         }
     }
 }
