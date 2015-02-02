@@ -24,5 +24,13 @@ namespace StackPanelAnordnung
         {
             InitializeComponent();
         }
+
+        private void neu_Click(object sender, RoutedEventArgs e)
+        {
+            Button nb = new Button();
+            nb.Content = "Neu";
+            Panel p = (sender as Button).Parent as Panel;
+            p.Children.Add(nb);
+        }
     }
 }

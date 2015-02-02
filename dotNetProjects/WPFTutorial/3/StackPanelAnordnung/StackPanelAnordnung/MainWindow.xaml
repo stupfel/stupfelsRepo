@@ -1,8 +1,28 @@
 ﻿<Window x:Class="StackPanelAnordnung.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="MainWindow" Height="150" Width="425">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Width="100" Margin="10">
+            <Button Click="neu_Click">Button 1</Button>
+            <Button>Button 2</Button>
+            <Button>Button 3</Button>
+        </StackPanel>
         
-    </Grid>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10">
+            <Button>B 4</Button>
+            <Button>B 5</Button>
+            <Button>B 6</Button>
+        </StackPanel>
+        
+        <ScrollViewer  VerticalScrollBarVisibility="Auto" Margin="10" Height="50">
+            <StackPanel Width="100">
+                <Button>Button 7</Button>
+                <Button>Button 8</Button>
+                <Button>Button 9</Button>
+                <Button>Button 10</Button>
+            </StackPanel>
+        </ScrollViewer>
+        
+    </StackPanel>
 </Window>

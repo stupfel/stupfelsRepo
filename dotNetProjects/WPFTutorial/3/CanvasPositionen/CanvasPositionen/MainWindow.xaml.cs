@@ -39,5 +39,10 @@ namespace CanvasPositionen
         {
 
         }
+
+        private void b4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
