@@ -1,0 +1,12 @@
+﻿<Window x:Class="DockPanelTBLR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="150" Width="225">
+    <DockPanel>
+        <Button DockPanel.Dock="Top">1: Top</Button>
+        <Button DockPanel.Dock="Bottom">2: Bottom</Button>
+        <Button DockPanel.Dock="Left">3: L</Button>
+        <Button DockPanel.Dock="Left">4: L</Button>
+        <Button DockPanel.Dock="Left">5: L</Button>
+    </DockPanel>
+</Window>
