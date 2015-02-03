@@ -8,5 +8,7 @@
         <Button DockPanel.Dock="Left">3: L</Button>
         <Button DockPanel.Dock="Left">4: L</Button>
         <Button DockPanel.Dock="Left">5: L</Button>
+        <Button DockPanel.Dock="Right">6: Right</Button>
+        <TextBlock Margin="10">Inhalt</TextBlock>
     </DockPanel>
 </Window>

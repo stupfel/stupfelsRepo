@@ -1,0 +1,11 @@
+﻿<Window x:Class="DockPanelLastChild.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="150" Width="225">
+    <DockPanel LastChildFill="false">
+        <Button DockPanel.Dock="Left">1: Left</Button>
+        <Button DockPanel.Dock="Right">2: Right</Button>
+        <Button DockPanel.Dock="Top" Click="neu_Click">3: Top</Button>
+        <Button DockPanel.Dock="Bottom" Click="neu_Click">4: Bottom</Button>
+    </DockPanel>
+</Window>
