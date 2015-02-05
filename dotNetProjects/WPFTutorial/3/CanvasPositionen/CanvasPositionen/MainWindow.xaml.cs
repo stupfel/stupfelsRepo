@@ -37,7 +37,11 @@ namespace CanvasPositionen
 
         private void b6_Click(object sender, RoutedEventArgs e)
         {
-
+            Button nb = new Button();
+            nb.Content = "Neu";
+            nb.SetValue(Canvas.RightProperty, 5.0);
+            nb.SetValue(Canvas.BottomProperty, 80.0);
+            cv.Children.Add(nb);
         }
 
         private void b4_Click(object sender, RoutedEventArgs e)

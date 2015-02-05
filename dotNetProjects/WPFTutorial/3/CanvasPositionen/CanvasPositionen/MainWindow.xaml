@@ -9,8 +9,13 @@
             2: Left 30, Top 18</Button>
         <Button Canvas.Left="5" Canvas.Bottom="5">
             3: Left 5, Bottom 5</Button>
+<<<<<<< .mine
+        <Button Canvas.Right="5" Canvas.Bottom="22" Panel.ZIndex="1">
+            4: Right 5, Bottom 22. ZIndex 1</Button>
+=======
         <Button x:Name="b4" Canvas.Right="5" Canvas.Bottom="22" Panel.ZIndex="1" Click="b4_Click">
             4: Right 5, Bottom 22, ZIndex 1</Button>
+>>>>>>> .r54
         <Button Canvas.Right="5" Canvas.Bottom="39">
             5: Right 5, Bottom 39</Button>
         <Button Canvas.Right="5" Canvas.Bottom="5" Panel.ZIndex="1" x:Name="b6" Click="b6_Click">
