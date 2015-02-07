@@ -17,9 +17,23 @@
             <Button Grid.Row="0" Grid.Column="0">
                 <StackPanel>
                     <TextBlock>Text 3</TextBlock>
-                    ...
+                    <ComboBox>
+                        <ComboBoxItem IsSelected="True">3.1</ComboBoxItem>
+                        <ComboBoxItem>3.2</ComboBoxItem>
+                        <ComboBoxItem>3.3</ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
             </Button>
+            <Button Grid.Row="0" Grid.Column="1">B 4</Button>
+            <Button Grid.Row="1" Grid.Column="0">
+                <StackPanel>
+                    <TextBlock>Text 5</TextBlock>
+                    <CheckBox>CB 5</CheckBox>
+                </StackPanel>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="1">B 6</Button>
+            
         </Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Inhalt</TextBlock>
     </DockPanel>
 </Window>
