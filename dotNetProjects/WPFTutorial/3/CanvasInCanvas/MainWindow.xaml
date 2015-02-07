@@ -1,0 +1,14 @@
+﻿<Window x:Class="CanvasInCanvas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="180" Width="325">
+    <Canvas>
+        <Canvas Width="200" Height="60" x:Name="cv1" Background="LightGray">
+            <Button Canvas.Top="10" Canvas.Left="50">Button 1</Button>
+        </Canvas>
+        <Canvas Width="200" Height="60" x:Name="cv2" Canvas.Left="10" Canvas.Top="70" Background="LightGray">
+            <Button Canvas.Top="10" Canvas.Left="50">Button 2</Button>
+            <Button Canvas.Top="10" Canvas.Left="110" x:Name="b3" Click="b3_Click">Button 3</Button>
+        </Canvas>
+    </Canvas>
+</Window>
