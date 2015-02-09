@@ -4,8 +4,8 @@
         Title="MainWindow" Height="200" Width="225">
     <StackPanel>
         <ScrollViewer  VerticalScrollBarVisibility="Auto" Margin="10" Height="190">
-            <StackPanel Width="170">
-                <Button x:Name="b1">ControlsNeu</Button>
+            <StackPanel x:Name="sp" Width="170">
+                <Button x:Name="b1" Click="b1_Click">ControlsNeu</Button>
             </StackPanel>
         </ScrollViewer>
     </StackPanel>

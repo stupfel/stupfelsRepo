@@ -20,9 +20,26 @@ namespace ControlsNeuLoeschen
     /// </summary>
     public partial class MainWindow : Window
     {
+        int nr;
         public MainWindow()
         {
             InitializeComponent();
+            nr = 1;
+        }
+
+        private void b1_Click(object sender, RoutedEventArgs e)
+        {
+            Button neu = new Button();
+            neu.Content = "Neu " + nr;
+            nr++;
+            neu.Click += new RoutedEventHandler(loeschen);
+            sp.Children.Add(neu);
+        }
+
+
+        private void loeschen(object sender, RoutedEventArgs e)
+        {
+            sp.Children.Remove(sender as UIElement);
         }
     }
 }
