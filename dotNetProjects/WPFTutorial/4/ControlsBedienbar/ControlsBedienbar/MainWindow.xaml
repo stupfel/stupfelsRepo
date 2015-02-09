@@ -1,0 +1,11 @@
+﻿<Window x:Class="ControlsBedienbar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="150" Width="225">
+    <StackPanel>
+        <Button Click="b1_Click">ControlsBedienbar</Button>
+        <Button x:Name="b2" Visibility="Hidden">2</Button>
+        <Button x:Name="b3" Visibility="Collapsed">3</Button>
+        <Button x:Name="b4" IsEnabled="False" Click="b4_Click">4</Button>
+    </StackPanel>
+</Window>

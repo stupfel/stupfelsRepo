@@ -5,7 +5,7 @@
     <Canvas>
         <Button x:Name="b1" Height="30" Width="180"
             FontFamily="Calibri" FontSize="11" FontStyle="Italic"
-            FontWeight="Bold" Click="b1_Click">
+            FontWeight="Bold" FontStretch="UltraExpanded" Click="b1_Click">
             1: H30, W180, Calibri 11 italic bold</Button>
         <Button Content="2: ohne Angaben" Canvas.Top="35" />
         <Button x:Name="b3" Canvas.Top="63" Background="White"
@@ -13,5 +13,8 @@
             3: grau auf weiß</Button>
         <Button Canvas.Top="91" Click="b4_Click">
             4: _Hallo (Alt+H)></Button>
+        <Button Canvas.Top="119" Click="b5_Click">
+            5: Unter_strich_anzeigen (Alt+S)
+        </Button>
     </Canvas>
 </Window>
