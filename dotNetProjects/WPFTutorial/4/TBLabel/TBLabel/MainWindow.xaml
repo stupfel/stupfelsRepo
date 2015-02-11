@@ -1,0 +1,24 @@
+﻿<Window x:Class="TBLabel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="150" Width="225">
+    <StackPanel>
+        <WrapPanel Margin="1">
+            <TextBox x:Name="tbname" Width="80" />
+            <!-- Target ist das Ziel das den Focus erhält-->
+            <Label Target="{Binding ElementName=tbname}">
+                _Name</Label>
+        </WrapPanel>
+        <WrapPanel Margin="1">
+            <TextBox x:Name="tbvorname" Width="80" />
+            <Label Target="{Binding ElementName=tbvorname}">
+                _Vorame</Label>
+        </WrapPanel>
+        <WrapPanel Margin="1">
+            <TextBox Width="80" />
+            <Label>
+                <Bold>Ort</Bold>
+            </Label>
+        </WrapPanel>
+    </StackPanel>
+</Window>

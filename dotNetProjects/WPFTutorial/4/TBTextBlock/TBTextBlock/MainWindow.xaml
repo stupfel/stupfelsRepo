@@ -1,0 +1,16 @@
+﻿<Window x:Class="TBTextBlock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="275" Width="275">
+    <StackPanel>
+        <TextBlock x:Name="tb1" Background="LightGray">1: Das ist ein langer Text, der über den Zeilenrand hinausgeht und verschwindet.</TextBlock>
+        <TextBlock x:Name="tb2" TextWrapping="Wrap">2: Das ist ein Text mit einem manuellen<LineBreak />LineBreak und einem automatischen Umbruch, falls die Zeile zu lang wird.</TextBlock>
+        <TextBlock x:Name="tb3" Background="LightGray">3: Textteile <Bold>fett</Bold> oder <Italic>kursiv</Italic></TextBlock>
+        <TextBlock x:Name="tb4" FontStyle="Italic"><Run>4:</Run> <Run Foreground="Gray" FontStyle="Normal">Grau, nicht kursiv</Run><Run>Text</Run><Run FontFamily="Tahoma" FontSize="20">Arial 10</Run></TextBlock>
+        
+        <Separator Height="5" Margin="0,2,0,2"/>
+
+        <Button x:Name="anzeigen1">1 anzeigen</Button>
+        <Button x:Name="setzen2">2 setzen</Button>
+    </StackPanel>
+</Window>
