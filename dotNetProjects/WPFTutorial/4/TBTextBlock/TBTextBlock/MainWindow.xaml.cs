@@ -24,5 +24,30 @@ namespace TBTextBlock
         {
             InitializeComponent();
         }
+
+        private void b1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void b2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void b3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void b4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void b5_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

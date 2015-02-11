@@ -9,8 +9,14 @@
         <TextBlock x:Name="tb4" FontStyle="Italic"><Run>4:</Run> <Run Foreground="Gray" FontStyle="Normal">Grau, nicht kursiv</Run><Run>Text</Run><Run FontFamily="Tahoma" FontSize="20">Arial 10</Run></TextBlock>
         
         <Separator Height="5" Margin="0,2,0,2"/>
-
-        <Button x:Name="anzeigen1">1 anzeigen</Button>
-        <Button x:Name="setzen2">2 setzen</Button>
+        
+        <StackPanel >
+        <Button x:Name="b1" Click="b1_Click">1 anzeigen
+            </Button>
+            <Button x:Name="b2" Click="b2_Click">2 setzen</Button>
+            <Button x:Name="b3" Click="b3_Click">3 ändern</Button>
+            <Button x:Name="b4" Click="b4_Click">4 anzeigen</Button>
+            <Button x:Name="b5" Click="b5_Click">4 ändern</Button>
+        </StackPanel>
     </StackPanel>
 </Window>
