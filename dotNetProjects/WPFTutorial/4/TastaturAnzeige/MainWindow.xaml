@@ -1,0 +1,10 @@
+﻿<Window x:Class="TastaturAnzeige.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <Button Click="leeren_Click">Leeren</Button>
+        <TextBox x:Name="tb" KeyDown="tb_KeyDown" />
+        <ListBox x:Name="lb" Height="210"></ListBox>
+    </StackPanel>
+</Window>

@@ -1,0 +1,9 @@
+﻿<Window x:Class="TastaturSteuerung.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
+    <Canvas>
+        <Rectangle x:Name="rc" Width="20" Height="20" Canvas.Left="130" Canvas.Top="25" Fill="Gray" />
+    </Canvas>
+</Window>
