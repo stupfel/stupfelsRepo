@@ -1,0 +1,26 @@
+﻿<Window x:Class="KommandosEingebaut.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" CanExecute="erlaubt" Executed="ausfuehren" />
+    </Window.CommandBindings>
+    <StackPanel>
+        <WrapPanel HorizontalAlignment="Center">
+            <Button Command="EditingCommands.ToggleBold"
+                    CommandTarget="{Binding ElementName=rtbl}"
+                    Margin="5" Width="50">Fett 1</Button>
+            <Button Command="EditingCommands.ToggleBold"
+                    CommandTarget="{Binding ElementName=rtb2}"
+                    Margin="5" Width="50">Fett 2</Button>
+            <Button Command="ApplicationCommands.Close"
+                    Margin="5" Width="50">Ende 1</Button>
+            <Button Command="ApplicationCommands.Close"
+                    Margin="5" Width="50">Ende 2</Button>
+        </WrapPanel>
+        <RichTextBox x:Name="rtb1" Margin="5" Height="35"
+                     TextChanged="tc1" />
+        <RichTextBox x:Name="rtb2" Margin="5" Height="35"
+                     TextChanged="tc2" />
+    </StackPanel>
+</Window>
