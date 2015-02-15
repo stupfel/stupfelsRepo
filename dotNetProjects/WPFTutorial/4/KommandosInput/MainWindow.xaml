@@ -1,0 +1,26 @@
+﻿<Window x:Class="KommandosInput.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.InputBindings>
+        <KeyBinding Command="EditingCommands.ToggleBold"
+            CommandTarget="{Binding ElementName=rtb}"
+            Key="F" Modifiers="Control" />
+        <KeyBinding Command="EditingCommands.ToggleBold"
+            CommandTarget="{Binding ElementName=rtb}"
+            Key="F12"/>
+        <KeyBinding Command="EditingCommands.ToggleBold"
+            CommandTarget="{Binding ElementName=rtb}"
+            Key="G" Modifiers="Control+Alt" />
+        <MouseBinding Command="EditingCommands.ToggleBold"
+            CommandTarget="{Binding ElementName=rtb}"
+            MouseAction="WheelClick" />
+    </Window.InputBindings>
+
+    <Grid>
+        <MenuItem Header="Fett (Strg+F) (F12) (Strg+Alt+G)
+                  (RightDoubleClick) (WheelClick)"
+                  Command="EditingCommands.ToggleBold"
+                  CommandTarget="{Binding ElementName=rtb}" />
+    </Grid>
+</Window>

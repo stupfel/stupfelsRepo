@@ -8,7 +8,7 @@
     <StackPanel>
         <WrapPanel HorizontalAlignment="Center">
             <Button Command="EditingCommands.ToggleBold"
-                    CommandTarget="{Binding ElementName=rtbl}"
+                    CommandTarget="{Binding ElementName=rtb1}"
                     Margin="5" Width="50">Fett 1</Button>
             <Button Command="EditingCommands.ToggleBold"
                     CommandTarget="{Binding ElementName=rtb2}"
