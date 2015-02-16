@@ -17,10 +17,11 @@
             MouseAction="WheelClick" />
     </Window.InputBindings>
 
-    <Grid>
+    <StackPanel>
         <MenuItem Header="Fett (Strg+F) (F12) (Strg+Alt+G)
                   (RightDoubleClick) (WheelClick)"
                   Command="EditingCommands.ToggleBold"
                   CommandTarget="{Binding ElementName=rtb}" />
-    </Grid>
+        <RichTextBox x:Name="rtb"></RichTextBox>
+    </StackPanel>
 </Window>

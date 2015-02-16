@@ -1,0 +1,14 @@
+﻿<Window x:Class="KommandosEigene.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ke="clr-namespace:KommandosEigene"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="ke:meineKommandos.Ausgabe_Eins"
+                        CanExecute="Ausgabe_Eins_erlaubt"
+                        Executed="Ausgabe_Eins_ausgefuehrt" />
+    </Window.CommandBindings>
+    <Grid>
+        
+    </Grid>
+</Window>
