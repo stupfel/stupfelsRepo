@@ -48,5 +48,17 @@ namespace AnwendungReihenfolge
             }
         }
 
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        { MessageBox.Show("Fenster ist entladen"); }
+
+        private void Window_Closed(object sender, EventArgs e)
+        { MessageBox.Show("Fenster ist geschlossen"); }
+
+        private void init(object sender, EventArgs e)
+        {           MessageBox.Show(((FrameworkElement)sender).Name                + " initialisiert");
+        }
+        private void load(object sender, RoutedEventArgs e)
+        {            MessageBox.Show(((FrameworkElement)sender).Name                + " geladen");
+        }
     }
 }
