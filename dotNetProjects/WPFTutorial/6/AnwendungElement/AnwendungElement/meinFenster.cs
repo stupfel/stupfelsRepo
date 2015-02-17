@@ -12,5 +12,23 @@ namespace AnwendungEinfach
             meinFenster mf = new meinFenster();
             a.Run(mf);
         }
+
+        public meinFenster()
+        {
+            Button b = new Button();
+            b.Margin = new Thickness(5);
+            b.Content = "Hallo";
+            b.Click += new RoutedEventHandler(b_Click);
+
+            this.Width = 250;
+            this.Height = 80;
+            this.Title = "AnwendungELement";
+            this.Content = b;
+        }
+
+        private void b_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hallo");
+        }
     }
 }
