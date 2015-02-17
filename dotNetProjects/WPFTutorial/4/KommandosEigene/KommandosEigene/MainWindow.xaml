@@ -7,8 +7,18 @@
         <CommandBinding Command="ke:meineKommandos.Ausgabe_Eins"
                         CanExecute="Ausgabe_Eins_erlaubt"
                         Executed="Ausgabe_Eins_ausgefuehrt" />
+        <CommandBinding Command="ke:meineKommandos.Ausgabe_Zwei"
+                        CanExecute="Ausgabe_Zwei_erlaubt"
+                        Executed="Ausgabe_Zwei_ausgefuehrt" />
     </Window.CommandBindings>
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <CheckBox x:Name="cb1" Width="100" Margin="5">
+            "Eins" erlaubt</CheckBox>
+        <Button Command="ke:meineKommandos.Ausgabe_Eins"
+                Width="100" Margin="5">Eins</Button>
+        <CheckBox x:Name="cb2" Width="100" Margin="5">
+            "Zwei" erlaubt</CheckBox>
+        <Button Command="ke:meineKommandos.Ausgabe_Zwei"
+                Width="100" Margin="5">Zwei</Button>
+    </StackPanel>
 </Window>

@@ -27,12 +27,22 @@ namespace KommandosEigene
 
         private void Ausgabe_Eins_erlaubt(object sender, CanExecuteRoutedEventArgs e)
         {
-
+            e.CanExecute = (bool)cb1.IsChecked;
         }
 
         private void Ausgabe_Eins_ausgefuehrt(object sender, ExecutedRoutedEventArgs e)
         {
+            MessageBox.Show("Eins");
+        }
 
+        private void Ausgabe_Zwei_erlaubt(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = (bool)cb2.IsChecked;
+        }
+
+        private void Ausgabe_Zwei_ausgefuehrt(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Zwei");
         }
     }
 }
