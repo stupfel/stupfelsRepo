@@ -36,6 +36,7 @@ namespace AnwendungKommandozeile
          
         private void Application_Exit(object sender, ExitEventArgs e)
         {
+            MessageBox.Show("Ergebnis: " + erg);
             e.ApplicationExitCode = erg;
         }
     }

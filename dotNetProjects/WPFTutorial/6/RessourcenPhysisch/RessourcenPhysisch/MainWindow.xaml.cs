@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AnwendungKommandozeile
+namespace RessourcenPhysisch
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -25,9 +25,14 @@ namespace AnwendungKommandozeile
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void rb_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(App.arg0 + " + " + App.arg1 + " = " + App.erg);
+
+        }
+
+        private void b_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
