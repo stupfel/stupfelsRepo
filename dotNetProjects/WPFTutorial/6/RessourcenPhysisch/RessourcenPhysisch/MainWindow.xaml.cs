@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace RessourcenPhysisch
     /// </summary>
     public partial class MainWindow : Window
     {
+        string sImagePath = "images/";
         public MainWindow()
         {
             InitializeComponent();
@@ -27,12 +29,13 @@ namespace RessourcenPhysisch
 
         private void rb_Click(object sender, RoutedEventArgs e)
         {
-
+            Control c = (Control)sender;
+            im.Source = new BitmapImage(new Uri(sImagePath + c.Name + ".jpg", UriKind.Relative));
         }
 
         private void b_Click(object sender, RoutedEventArgs e)
         {
-
+            SoundPlayer sp = new SoundPlayer("69.mp3");
         }
     }
 }

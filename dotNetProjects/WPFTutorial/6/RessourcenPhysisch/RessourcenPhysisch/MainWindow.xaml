@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="150" Width="225">
     <StackPanel>
-        <Image x:Name="im" Source="50cent.jpg"
+        <Image x:Name="im" Source="images/cent50.jpg"
                Height="32" Width="32" />
-        <RadioButton x:Name="50cent"
+        <RadioButton x:Name="cent50"
                      Click="rb_Click" IsChecked="True">50 Cent</RadioButton>
-        <RadioButton x:Name="pirat"
+        <RadioButton x:Name="st"
                      Click="rb_Click" IsChecked="False">Pirat</RadioButton>
         <Button Width="60" Click="b_Click">69</Button>
     </StackPanel>

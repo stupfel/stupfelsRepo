@@ -94,15 +94,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="st.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="50cent.jpg" />
+    <Resource Include="images\st.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="69.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="images\cent50.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
