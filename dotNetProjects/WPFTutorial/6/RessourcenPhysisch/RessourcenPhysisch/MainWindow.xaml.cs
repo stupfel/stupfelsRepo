@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace RessourcenPhysisch
 {
@@ -29,8 +30,13 @@ namespace RessourcenPhysisch
 
         private void rb_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< .mine
+            Control c = (Control)sender;
+            im.Source = new BitmapImage(new Uri(c.Name + ".jpg", UriKind.Relative));
+=======
             Control c = (Control)sender;
             im.Source = new BitmapImage(new Uri(sImagePath + c.Name + ".jpg", UriKind.Relative));
+>>>>>>> .r77
         }
 
         private void b_Click(object sender, RoutedEventArgs e)
