@@ -1,0 +1,17 @@
+﻿<Window x:Class="RessourcenLogisch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="150" Width="225"
+        Background="{DynamicResource winbrush}">
+    <Window.Resources>
+        <SolidColorBrush x:Key="winbrush">LightGray</SolidColorBrush>
+        <SolidColorBrush x:Key="bgbrush">Gray</SolidColorBrush>
+    </Window.Resources>
+    <StackPanel>
+        <Button x:Name="b" Background="{StaticResource bgbrush}"
+                Foreground="{StaticResource fgbrush}" Width="120"
+                Margin="5">Button 1</Button>
+        <RadioButton IsChecked="true" Click="rb1_click">Schrift weiß</RadioButton>
+        <RadioButton Click="rb2_Click">Schrift hellgrau</RadioButton>
+    </StackPanel>
+</Window>

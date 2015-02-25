@@ -1,0 +1,9 @@
+﻿<Application x:Class="RessourcenLogisch.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="fgbrush">White</SolidColorBrush>
+        <SolidColorBrush x:Key="bgbrush">Red</SolidColorBrush>
+    </Application.Resources>
+</Application>
