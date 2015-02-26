@@ -1,0 +1,22 @@
+﻿<Window x:Class="FensterMember.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="200" Width="300"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False" ResizeMode="NoResize"
+        Topmost="True" LocationChanged="Window_LocationChanged"
+        StateChanged="Window_StateChanged"
+        SizeChanged="Window_SizeChanged">
+    <WrapPanel>
+        <CheckBox x:Name="checkShowInTaskbar" Click="checkShowInTaskbar_Click" Margin="5">ShowInTaskbar</CheckBox>
+        <CheckBox x:Name="checkCanResize" Unchecked="checkCanResize_Unchecked" Checked="checkCanResize_Checked" Click="checkCanResize_Click" Margin="5">CanResize</CheckBox>
+        <CheckBox x:Name="checkTopMost" Click="checkTopMost_Click"  Margin="5" IsChecked="True">TopMost</CheckBox>
+        <Button x:Name="btnSizeToContent" Margin="5" Click="btnSizeToContent_Click">SizeToContent</Button>
+        <Button x:Name="btnOriginal" Margin="5" Click="btnOriginal_Click">Originalgröße</Button>
+        <Button x:Name="btnGroesser" Margin="5" Click="btnGroesser_Click">Größer</Button>
+        <Button x:Name="btnRechtsUnten" Margin="5" Click="btnRechtsUnten_Click">Nach rechts unten</Button>
+        <Label x:Name="lblLocation" Margin="5">Location: Top / Left </Label>
+        <Label x:Name="lblSize" Margin="5">Size Height / Width</Label>
+        <Label x:Name="lblState" Margin="5"></Label>
+    </WrapPanel>
+</Window>
