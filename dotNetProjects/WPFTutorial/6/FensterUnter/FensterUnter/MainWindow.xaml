@@ -1,0 +1,10 @@
+﻿<Window x:Class="FensterUnter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FensterUnter" Height="150" Width="225">
+    <StackPanel>
+        <Button x:Name="btnNewWindow" Click="btnNewWindow_Click" Margin="5">Neues Fenster</Button>
+        <TextBox x:Name="txtBox" Margin="5"></TextBox>
+        <Label x:Name="lblStatus" Margin="5"></Label>
+    </StackPanel>
+</Window>

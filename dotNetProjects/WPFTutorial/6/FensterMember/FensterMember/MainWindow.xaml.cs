@@ -32,17 +32,21 @@ namespace FensterMember
 
         private void btnOriginal_Click(object sender, RoutedEventArgs e)
         {
-
+            SizeToContent = SizeToContent.Manual;
+            Height = 200;
+            Width = 300;
         }
 
         private void btnGroesser_Click(object sender, RoutedEventArgs e)
         {
-
+            Height = Height + 20;
+            Width = Width + 20;
         }
 
         private void btnRechtsUnten_Click(object sender, RoutedEventArgs e)
         {
-
+            Top = Top + 50;
+            Left = Left + 50;
         }
 
         private void checkShowInTaskbar_Click(object sender, RoutedEventArgs e)
