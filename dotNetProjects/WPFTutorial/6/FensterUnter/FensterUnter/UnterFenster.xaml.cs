@@ -19,6 +19,14 @@ namespace FensterUnter
     /// </summary>
     public partial class UnterFenster : Window
     {
+        string eingabetext;
+
+        public UnterFenster(string et)
+        {
+            InitializeComponent();
+            txtBox.Text = et;
+        }
+
         public UnterFenster()
         {
             InitializeComponent();
@@ -26,12 +34,16 @@ namespace FensterUnter
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-
+            eingabetext = txtBox.Text;
+            DialogResult = true;
         }
 
         private void btnAbbrechen_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = false;
         }
+
+        public string Eingabetext
+        { get { return this.eingabetext;  } }
     }
 }
