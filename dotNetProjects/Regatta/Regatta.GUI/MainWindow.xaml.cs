@@ -23,6 +23,42 @@ namespace Regatta.GUI
         public MainWindow()
         {
             InitializeComponent();
+            for (int i = 0; i < 50; i++)
+            {
+                regattaGrid.RowDefinitions.Add(new RowDefinition());
+                regattaGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            drawGrid();
         }
+
+        public void drawGrid()
+        {
+            Label lblCell;
+            SolidColorBrush brushRed = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            SolidColorBrush brushWhite = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+
+            for (int x = 1; x < regattaGrid.ColumnDefinitions.Count; x++)
+            {
+                for (int y = 1; y < regattaGrid.RowDefinitions.Count; y++)
+                {
+                    try
+                    {
+                        lblCell = new Label();
+                        lblCell.BorderThickness = new Thickness(1);
+                        lblCell.BorderBrush = Brushes.Gray;
+
+                        Grid.SetColumn(lblCell, x);
+                        Grid.SetRow(lblCell, y);
+                        regattaGrid.Children.Add(lblCell);
+                    }
+                    catch (Exception e)
+                    {
+                        throw;
+                    }
+                }
+            }
+        }
+
+
     }
 }

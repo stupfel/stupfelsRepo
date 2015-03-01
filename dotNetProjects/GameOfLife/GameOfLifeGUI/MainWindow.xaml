@@ -1,0 +1,16 @@
+﻿<Window x:Class="GameOfLifeGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="650" Width="600">
+    <DockPanel>
+        <Grid x:Name="golGrid" Width="500" Height="500" DockPanel.Dock="Top">
+            
+        </Grid>
+        <!--<Canvas x:Name="c1" Height="500" DockPanel.Dock="Top">
+        </Canvas>-->
+        
+        <Button x:Name="btnNext" Click="btnNext_Click" DockPanel.Dock="Bottom">Nächster Schritt</Button>
+        <CheckBox x:Name="checkAuto" Click="checkAuto_Click" DockPanel.Dock="Bottom" IsThreeState="False">Auto</CheckBox>      
+    </DockPanel>
+
+</Window>
