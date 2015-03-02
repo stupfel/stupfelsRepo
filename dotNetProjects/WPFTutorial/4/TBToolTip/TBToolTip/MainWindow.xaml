@@ -1,0 +1,22 @@
+﻿<Window x:Class="TBToolTip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <WrapPanel Margin="5">
+            <Label>Name:</Label>
+            <TextBox ToolTip="Bitte geben Sie Ihren Namen ein"
+                     Width="80" />
+        </WrapPanel>
+        <Button x:Name="btnTooltip" Click="btnTooltip_Click"
+                HorizontalAlignment="Left" Margin="5">
+            Button mit ToolTip
+            <Button.ToolTip>
+                <StackPanel>
+                    <Image Source="adidas.jpg" />
+                    <TextBlock HorizontalAlignment="Center">Work</TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+    </StackPanel>
+</Window>
