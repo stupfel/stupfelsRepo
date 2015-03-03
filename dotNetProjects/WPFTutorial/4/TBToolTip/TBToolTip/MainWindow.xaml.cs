@@ -27,7 +27,7 @@ namespace TBToolTip
 
         private void btnTooltip_Click(object sender, RoutedEventArgs e)
         {
-
+            btnTooltip.ToolTip = "Neuer Tooltip";
         }
     }
 }
