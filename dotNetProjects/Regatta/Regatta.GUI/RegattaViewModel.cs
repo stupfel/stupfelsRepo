@@ -4,9 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Regatta.Logik;
+
 namespace Regatta.GUI
 {
-    class RegattaViewModel
+    public class RegattaViewModel
     {
+        RegattaBrett brett;
+
+        public RegattaViewModel()
+        {
+            brett = new RegattaBrett();
+        }
     }
 }

@@ -94,6 +94,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Regatta.Logik\Regatta.Logik.csproj">
+      <Project>{bf33263a-36c6-4450-b0dc-a475dbe36700}</Project>
+      <Name>Regatta.Logik</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\wrN.jpg" />
+    <Resource Include="images\wrO.jpg" />
+    <Resource Include="images\wrS.jpg" />
+    <Resource Include="images\wrW.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
