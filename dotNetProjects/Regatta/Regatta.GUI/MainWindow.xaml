@@ -17,7 +17,7 @@
 
             <StackPanel x:Name="pnlStatus" Grid.Column="0">
             <Image x:Name="imageRose" Width="50" Height="50"
-                   Source="images/wrN.jpg"></Image>
+                   Source="{Binding Path=WindroseSource}"></Image>
             <Label x:Name="lblWerIstAmZug">Am Zug: </Label>
 >>>>>>> .r89
             
