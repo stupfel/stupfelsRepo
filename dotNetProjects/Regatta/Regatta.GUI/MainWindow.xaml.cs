@@ -26,10 +26,15 @@ namespace Regatta.GUI
         private const string PathImages = "images/";
         private Dictionary<RegattaLogik.Windrichtung, BitmapImage> dictImages;
 
+        private RegattaViewModel _vm;
+
         public MainWindow()
         {
             BitmapImage imageWindrose;
             InitializeComponent();
+            
+            _vm = new RegattaViewModel();
+            this.DataContext = _vm;
 
             dictImages = new Dictionary<RegattaLogik.Windrichtung,BitmapImage>();
 
@@ -61,7 +66,7 @@ namespace Regatta.GUI
 
         private void drawStatus()
         {
-
+            WindroseImage();
         }
 
         private void drawGrid()
@@ -93,6 +98,12 @@ namespace Regatta.GUI
         }
 
         
+        public void WindroseImage()
+        {
+            BitmapImage imagetmp;
+            dictImages.TryGetValue(_vm.getWindroseRichtung(), out imagetmp);
+            //_vm.WindroseSource = imagetmp;
+        }
 
     }
 }

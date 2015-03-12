@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using Regatta.Logik;
 using System.ComponentModel;
 using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace Regatta.GUI
 {
     public class RegattaViewModel : INotifyPropertyChanged
     {
         RegattaBrett brett;
-        ImageSource _WindroseSource;
+        Images _WindroseSource;
 
         public RegattaViewModel()
         {
@@ -30,7 +31,8 @@ namespace Regatta.GUI
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
         }
 
-        public ImageSource WindroseSource
+
+        public Image WindroseSource
         {
             get { return _WindroseSource; }
             set
@@ -38,6 +40,14 @@ namespace Regatta.GUI
                 _WindroseSource = value;
                 OnPropertyChanged("WindroseSource");
             }
+        }
+        public string WindroseSourceName
+        {
+            get { return _WindroseSource.ToString(); }
+        }
+        public RegattaLogik.Windrichtung getWindroseRichtung()
+        {
+            return brett.getWindroseRichtung();
         }
     }
 }

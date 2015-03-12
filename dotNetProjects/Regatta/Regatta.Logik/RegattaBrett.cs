@@ -23,7 +23,14 @@ namespace Regatta.Logik
 
         Wuerfel wuerfel;
 
-        List<Yacht> Yachten = new List<Yacht>();
+        List<Yacht> Yachten;
+
+        public RegattaBrett()
+        {
+            Yachten = new List<Yacht>();
+            wuerfel = new Wuerfel(1, 5);
+            windrose = new Windrose(RegattaLogik.Windrichtung.N);
+        }
 
 
         public IEnumerable<Yacht> getYachten()
@@ -41,6 +48,11 @@ namespace Regatta.Logik
         private int getNextYachtID()
         {
             return Yachten.Count + 1;
+        }
+
+        public RegattaLogik.Windrichtung getWindroseRichtung()
+        {
+            return windrose.Windrichtung;
         }
     }
 }

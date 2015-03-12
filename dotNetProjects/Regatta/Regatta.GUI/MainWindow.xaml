@@ -12,37 +12,25 @@
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="510"/>
             </Grid.ColumnDefinitions>
-<<<<<<< .mine
-=======
+
 
             <StackPanel x:Name="pnlStatus" Grid.Column="0">
+                <!--<Image x:Name="imageRose" Width="50" Height="50"
+                       Source="{Binding WindroseSource}"></Image>-->
             <Image x:Name="imageRose" Width="50" Height="50"
-                   Source="{Binding Path=WindroseSource}"></Image>
-            <Label x:Name="lblWerIstAmZug">Am Zug: </Label>
->>>>>>> .r89
-            
-            <!--Status Panel-->
-            <StackPanel x:Name="pnlStatus" Grid.Column="0">
-                <Image x:Name="Windrose"></Image>
-                <Label x:Name="lblWerIstAmZug">Am Zug:</Label>
+                       Source="{Binding Path=WindroseSource}"></Image>
+            <TextBlock Text="{Binding WindroseSource}" />
+                <Label x:Name="lblWerIstAmZug">Am Zug: </Label>
+
             </StackPanel>
-<<<<<<< .mine
+
             
             <!-- Zeichenfläche -->
-            <Grid x:Name="regattaGrid" Grid.Column="1" DockPanel.Dock="Top">
-            </Grid>
-=======
             <Grid x:Name="regattaGrid" Grid.Column="1" Height="500" Width="600" DockPanel.Dock="Top">
->>>>>>> .r89
-
-<<<<<<< .mine
-            <!-- Steuerbereich -->
-            <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" DockPanel.Dock="Bottom">
-=======
             </Grid>
-            
+            <!-- Steuerbereich -->            
             <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" DockPanel.Dock="Bottom">
->>>>>>> .r89
+
                 <Button x:Name="btnZugBeenden">Zug Beenden</Button>
                 <Button x:Name="btnZugZurueck">Zurück</Button>
              </StackPanel>
