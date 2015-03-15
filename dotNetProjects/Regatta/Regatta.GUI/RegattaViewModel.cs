@@ -8,17 +8,42 @@ using Regatta.Logik;
 using System.ComponentModel;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Regatta.GUI
 {
     public class RegattaViewModel : INotifyPropertyChanged
     {
         RegattaBrett brett;
-        Images _WindroseSource;
+        BitmapImage _WindroseSource;
+        BitmapImage imageWindrose;
+
+        private const string PathImages = "images/";
+        private Dictionary<RegattaLogik.Windrichtung, BitmapImage> dictImages;
+
 
         public RegattaViewModel()
         {
             brett = new RegattaBrett();
+
+            dictImages = new Dictionary<RegattaLogik.Windrichtung, BitmapImage>();
+
+            imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.N + ".jpg", UriKind.Relative));
+            dictImages.Add(RegattaLogik.Windrichtung.N, imageWindrose);
+            imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.NO + ".jpg", UriKind.Relative));
+            dictImages.Add(RegattaLogik.Windrichtung.NO, imageWindrose);
+            imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.O + ".jpg", UriKind.Relative));
+            dictImages.Add(RegattaLogik.Windrichtung.O, imageWindrose);
+            imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.SO + ".jpg", UriKind.Relative));
+            dictImages.Add(RegattaLogik.Windrichtung.SO, imageWindrose);
+            imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.S + ".jpg", UriKind.Relative));
+            dictImages.Add(RegattaLogik.Windrichtung.S, imageWindrose);
+            imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.SW + ".jpg", UriKind.Relative));
+            dictImages.Add(RegattaLogik.Windrichtung.SW, imageWindrose);
+            imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.W + ".jpg", UriKind.Relative));
+            dictImages.Add(RegattaLogik.Windrichtung.W, imageWindrose);
+            imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.NW + ".jpg", UriKind.Relative));
+            dictImages.Add(RegattaLogik.Windrichtung.NW, imageWindrose);
         }
 
         // Schnittstellen-Ereignis
@@ -32,7 +57,7 @@ namespace Regatta.GUI
         }
 
 
-        public Image WindroseSource
+        public BitmapImage WindroseSource
         {
             get { return _WindroseSource; }
             set
@@ -41,13 +66,30 @@ namespace Regatta.GUI
                 OnPropertyChanged("WindroseSource");
             }
         }
-        public string WindroseSourceName
+
+
+        public void WindroseImage()
         {
-            get { return _WindroseSource.ToString(); }
+            BitmapImage imagetmp;
+            dictImages.TryGetValue(getWindroseRichtung(), out imagetmp);
+            WindroseSource = imagetmp;
         }
+
+        //public string WindroseSourceName
+        //{
+        //    get { return _WindroseSource.ToString(); }
+        //}
         public RegattaLogik.Windrichtung getWindroseRichtung()
         {
             return brett.getWindroseRichtung();
+        }
+        public void WinrdoseLinks()
+        {
+            brett.WindroseLinks();
+        }
+        public void WinrdoseRechts()
+        {
+            brett.WindroseRechts();
         }
     }
 }

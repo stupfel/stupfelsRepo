@@ -54,5 +54,13 @@ namespace Regatta.Logik
         {
             return windrose.Windrichtung;
         }
+        public void WindroseLinks()
+        {
+            windrose.Drehe(RegattaLogik.Richtung.links);
+        }
+        public void WindroseRechts()
+        {
+            windrose.Drehe(RegattaLogik.Richtung.rechts);
+        }
     }
 }
