@@ -21,13 +21,11 @@ namespace Regatta.GUI
         private const string PathImages = "images/";
         private Dictionary<RegattaLogik.Windrichtung, BitmapImage> dictImages;
 
-
         public RegattaViewModel()
         {
             brett = new RegattaBrett();
 
             dictImages = new Dictionary<RegattaLogik.Windrichtung, BitmapImage>();
-
             imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.N + ".jpg", UriKind.Relative));
             dictImages.Add(RegattaLogik.Windrichtung.N, imageWindrose);
             imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.NO + ".jpg", UriKind.Relative));
@@ -44,19 +42,34 @@ namespace Regatta.GUI
             dictImages.Add(RegattaLogik.Windrichtung.W, imageWindrose);
             imageWindrose = new BitmapImage(new Uri(PathImages + "wr" + RegattaLogik.Windrichtung.NW + ".jpg", UriKind.Relative));
             dictImages.Add(RegattaLogik.Windrichtung.NW, imageWindrose);
+
+            //Properties laden
+            LoadWindroseImage();
         }
 
         // Schnittstellen-Ereignis
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected internal void OnPropertyChanged(string propertyname)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
         }
 
+        // Schnittstelle zur Logik
+        public RegattaLogik.Windrichtung getWindroseRichtung()
+        {
+            return brett.getWindroseRichtung();
+        }
 
+        //Properties Laden
+        public void LoadWindroseImage()
+        {
+            BitmapImage imagetmp;
+            dictImages.TryGetValue(getWindroseRichtung(), out imagetmp);
+            WindroseSource = imagetmp;
+        }
+
+        //Properties für Ressourcen
         public BitmapImage WindroseSource
         {
             get { return _WindroseSource; }
@@ -67,29 +80,16 @@ namespace Regatta.GUI
             }
         }
 
-
-        public void WindroseImage()
-        {
-            BitmapImage imagetmp;
-            dictImages.TryGetValue(getWindroseRichtung(), out imagetmp);
-            WindroseSource = imagetmp;
-        }
-
-        //public string WindroseSourceName
-        //{
-        //    get { return _WindroseSource.ToString(); }
-        //}
-        public RegattaLogik.Windrichtung getWindroseRichtung()
-        {
-            return brett.getWindroseRichtung();
-        }
+        //DEBUG-Buttons
         public void WinrdoseLinks()
         {
             brett.WindroseLinks();
+            LoadWindroseImage();
         }
         public void WinrdoseRechts()
         {
             brett.WindroseRechts();
+            LoadWindroseImage();
         }
     }
 }
