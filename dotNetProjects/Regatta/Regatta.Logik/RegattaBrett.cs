@@ -25,11 +25,14 @@ namespace Regatta.Logik
 
         List<Yacht> Yachten;
 
+        private RegattaZustand _WerIstAmZug;
+
         public RegattaBrett()
         {
             Yachten = new List<Yacht>();
             wuerfel = new Wuerfel(1, 5);
             windrose = new Windrose(RegattaLogik.Windrichtung.N);
+            _WerIstAmZug = RegattaZustand.SpielerAamZug;
         }
 
 
@@ -37,14 +40,12 @@ namespace Regatta.Logik
         {
             return Yachten;
         }
-
         public Yacht CreateYacht()
         {
             Yacht newYacht = new Yacht(getNextYachtID(), this, 0, 0, RegattaLogik.Windrichtung.N);
             Yachten.Add(newYacht);
             return newYacht;
         }
-
         private int getNextYachtID()
         {
             return Yachten.Count + 1;
@@ -62,5 +63,8 @@ namespace Regatta.Logik
         {
             windrose.Drehe(RegattaLogik.Richtung.rechts);
         }
+
+        public WerIstAmZug()
+        {}
     }
 }
