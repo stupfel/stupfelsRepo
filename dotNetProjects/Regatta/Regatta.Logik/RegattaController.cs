@@ -22,7 +22,16 @@ namespace Regatta.Logik
             {
                 brett.CreateYacht();
             }
-            
+        }
+
+        public string WerIstAmZug
+        {
+            get { return brett.WerIstAmZug; }
+        }
+
+        public RegattaBrett Spielbrett
+        {
+            get { return brett; }
         }
     }
 }

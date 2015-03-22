@@ -237,5 +237,9 @@ namespace Regatta.Logik
         {
             return _position.X ^ _position.Y ^ _id;
         }
+        public int id
+        {
+            get { return id; }
+        }
     }
 }

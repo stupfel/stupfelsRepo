@@ -20,8 +20,8 @@
                        Source="{Binding WindroseSource}"></Image>
 
 
-            <TextBlock Text="{Binding WindroseSource}" />
-            <Label x:Name="lblWerIstAmZug">Am Zug:</Label>
+            <!--<TextBlock Text="{Binding WindroseSource}" />-->
+            <Label x:Name="lblWerIstAmZug" Content="{Binding WerIstAmZug}"></Label>
 
         </StackPanel>
         <!-- Zeichenfläche -->

@@ -8,11 +8,6 @@ namespace Regatta.Logik
 {
     public class RegattaBrett
     {
-        enum RegattaZustand
-        {
-            SpielerAamZug,
-            SpielerBamZug
-        }
 
         Boje BojeAStart;
         Boje BojeBStart;
@@ -25,14 +20,14 @@ namespace Regatta.Logik
 
         List<Yacht> Yachten;
 
-        private RegattaZustand _WerIstAmZug;
-
+        Yacht currentYacht;
+        
         public RegattaBrett()
         {
             Yachten = new List<Yacht>();
             wuerfel = new Wuerfel(1, 5);
             windrose = new Windrose(RegattaLogik.Windrichtung.N);
-            _WerIstAmZug = RegattaZustand.SpielerAamZug;
+            
         }
 
 
@@ -64,7 +59,19 @@ namespace Regatta.Logik
             windrose.Drehe(RegattaLogik.Richtung.rechts);
         }
 
-        public WerIstAmZug()
-        {}
+        public string WerIstAmZug
+        {
+            get 
+            {
+                if (currentYacht != null)
+                {
+                    return currentYacht.id + "";
+                }
+                else
+                {
+                    return "niemand";
+                }
+            }
+        }
     }
 }

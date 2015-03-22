@@ -31,6 +31,11 @@ namespace Regatta.Logik
             Hinten
         }
     
+        public static void ErmittleZugmoeglichkeiten(Yacht yacht)
+        {
+
+        }
+
         public static Windwinkel BerechneWindwinkel(Windrichtung windrichtung, Yacht yacht)
         {
             Windwinkel winkel = Windwinkel.Hinten;

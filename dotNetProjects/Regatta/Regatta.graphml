@@ -87,7 +87,7 @@ links</y:AttributeLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="175.0" width="153.75" x="275.99999999999983" y="307.2500000000001"/>
+          <y:Geometry height="175.0" width="153.75" x="245.92280701754368" y="431.1666666666669"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="87.75732421875" x="32.996337890625" y="3.0">Windrichtung<y:LabelModel>
@@ -115,7 +115,7 @@ NW</y:AttributeLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="220.00000000000006" width="161.2499999999999" x="543.8794921874999" y="383.7499999999999"/>
+          <y:Geometry height="220.00000000000006" width="161.2499999999999" x="513.6982421875002" y="288.7499999999999"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="39.40087890625" x="60.92456054687494" y="3.0">Yacht<y:LabelModel>
@@ -189,7 +189,6 @@ Hinten</y:AttributeLabel>
     </node>
     <node id="n7">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="114.06315789473672" width="100.0" x="-39.922807017543875" y="482.96666666666664"/>
@@ -210,6 +209,23 @@ PosY</y:AttributeLabel>
         </y:UMLClassNode>
       </data>
     </node>
+    <node id="n8">
+      <data key="d4"/>
+      <data key="d5"/>
+      <data key="d6">
+        <y:UMLClassNode>
+          <y:Geometry height="220.00000000000006" width="142.75000000000006" x="-153.9228070175439" y="28.75"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="98.048828125" x="22.35058593750003" y="3.0">RegattaController</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
+            <y:AttributeLabel>Spielbrett
+WerIstAmZug</y:AttributeLabel>
+            <y:MethodLabel>init()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
     <edge id="e0" source="n0" target="n1">
       <data key="d8"/>
       <data key="d10">
@@ -223,7 +239,6 @@ PosY</y:AttributeLabel>
     </edge>
     <edge id="e1" source="n0" target="n4">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -234,6 +249,17 @@ PosY</y:AttributeLabel>
       </data>
     </edge>
     <edge id="e2" source="n0" target="n5">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="n8" target="n0">
       <data key="d8"/>
       <data key="d9"/>
       <data key="d10">
