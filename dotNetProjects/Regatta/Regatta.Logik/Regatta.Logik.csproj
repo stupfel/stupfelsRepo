@@ -48,6 +48,7 @@
     <Compile Include="Windrose.cs" />
     <Compile Include="Wuerfel.cs" />
     <Compile Include="Yacht.cs" />
+    <Compile Include="Zug.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
