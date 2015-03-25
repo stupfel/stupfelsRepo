@@ -55,7 +55,7 @@ namespace Regatta.Logik
         }
 
         // segelt
-        public void segeln(RegattaLogik.Richtung Segelrichtung, RegattaLogik.Windrichtung windrichtung, bool BoeeNutzen)
+        public int getAnzahlFelder(RegattaLogik.Richtung Segelrichtung, RegattaLogik.Windrichtung windrichtung, bool BoeeNutzen)
         {
             int AnzahlFelder = 0;
 
@@ -89,10 +89,13 @@ namespace Regatta.Logik
                 AnzahlFelder = AnzahlFelder + 1;
             }
 
+            return AnzahlFelder;
         }
 
-        public void move(int AnzahlFelder)
+        public void move(int AnzahlFelder, out int MoeglicheFelder)
         {
+            MoeglicheFelder = 0;
+
             int dx = 0;
             int dy = 0;
 
@@ -144,6 +147,7 @@ namespace Regatta.Logik
 
                 _position.X = _position.X + dx;
                 _position.Y = _position.Y + dy;
+                MoeglicheFelder = MoeglicheFelder + 1;
 
                 //Kollision?
                 Yachten = _Brett.getYachten();
@@ -162,6 +166,7 @@ namespace Regatta.Logik
                 {
                     _position.X = xOld;
                     _position.Y = yOld;
+                    MoeglicheFelder = MoeglicheFelder - 1;
                     break;
                 }
             }

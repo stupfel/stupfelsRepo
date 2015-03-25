@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Regatta.Logik
 {
     public static class RegattaLogik
@@ -31,9 +32,20 @@ namespace Regatta.Logik
             Hinten
         }
     
-        public static void ErmittleZugmoeglichkeiten(Yacht yacht)
+        public static List<Zug> ErmittleZugmoeglichkeiten(RegattaLogik.Windrichtung windrichtung, Yacht yacht, List<Yacht> listYachten)
         {
+            // Ermittelt alle Zugmöglichkeiten der aktuellen Yacht
+            List<Zug> listZug = new List<Zug>();
+            Zug currentZug;
 
+            currentZug = new Zug();
+            yacht.drehe(Richtung.links);
+
+            yacht.getAnzahlFelder(yacht.Richtung, windrichtung, false);
+
+
+
+            return listZug;
         }
 
         public static Windwinkel BerechneWindwinkel(Windrichtung windrichtung, Yacht yacht)
