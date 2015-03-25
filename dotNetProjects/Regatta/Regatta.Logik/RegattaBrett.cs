@@ -9,63 +9,61 @@ namespace Regatta.Logik
     public class RegattaBrett
     {
 
-        Boje BojeAStart;
-        Boje BojeBStart;
-        Boje BojeC;
-        Boje BojeD;
+        private Boje _BojeAStart;
+        private Boje _BojeBStart;
+        private Boje _BojeC;
+        private Boje _BojeD;
 
-        Windrose windrose;
+        private Windrose _windrose;
 
-        Wuerfel wuerfel;
+        private Wuerfel _wuerfel;
 
-        List<Yacht> Yachten;
+        private List<Yacht> _Yachten;
 
-        Yacht currentYacht;
+        private Yacht _currentYacht;
         
         public RegattaBrett()
         {
-            Yachten = new List<Yacht>();
-            wuerfel = new Wuerfel(1, 5);
-            windrose = new Windrose(RegattaLogik.Windrichtung.N);
-            
+            _Yachten = new List<Yacht>();
+            _wuerfel = new Wuerfel(1, 5);
+            _windrose = new Windrose(RegattaLogik.Windrichtung.N);
         }
-
 
         public IEnumerable<Yacht> getYachten()
         {
-            return Yachten;
+            return _Yachten;
         }
         public Yacht CreateYacht()
         {
             Yacht newYacht = new Yacht(getNextYachtID(), this, 0, 0, RegattaLogik.Windrichtung.N);
-            Yachten.Add(newYacht);
+            _Yachten.Add(newYacht);
             return newYacht;
         }
         private int getNextYachtID()
         {
-            return Yachten.Count + 1;
+            return _Yachten.Count + 1;
         }
 
         public RegattaLogik.Windrichtung getWindroseRichtung()
         {
-            return windrose.Windrichtung;
+            return _windrose.Windrichtung;
         }
         public void WindroseLinks()
         {
-            windrose.Drehe(RegattaLogik.Richtung.links);
+            _windrose.Drehe(RegattaLogik.Richtung.links);
         }
         public void WindroseRechts()
         {
-            windrose.Drehe(RegattaLogik.Richtung.rechts);
+            _windrose.Drehe(RegattaLogik.Richtung.rechts);
         }
 
         public string WerIstAmZug
         {
             get 
             {
-                if (currentYacht != null)
+                if (_currentYacht != null)
                 {
-                    return currentYacht.id + "";
+                    return _currentYacht.id + "";
                 }
                 else
                 {
