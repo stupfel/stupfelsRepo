@@ -23,15 +23,21 @@ namespace DesktopColor
             _lastG = 100;
             _lastB = 100;
 
-            while (true)
+            Thread thread = new Thread(new ThreadStart(DesktopColor));
+            thread.Start();
+        }
+
+        private static void DesktopColor()
+        {
+            while(true)
             {
                 Color sampleColor = Color.FromArgb(_lastR, _lastG, _lastB);
                 ChangeDesktopColor(sampleColor);
-                Thread.Sleep(60000);
+                Thread.Sleep(200);
                 CreateRandomColor(_lastR, _lastG, _lastB, out _lastR, out _lastG, out _lastB);
             }
         }
-
+        
         private static void CreateRandomColor(int R, int G, int B, out int Rout, out int Gout, out int Bout)
         {
             int randomValue;
@@ -60,28 +66,28 @@ namespace DesktopColor
 
             if (Rout < 0)
             {
-                Rout = 0;
+                Rout = 255;
             }
             if (Gout < 0)
             {
-                Gout = 0;
+                Gout = 255;
             }
             if (Bout < 0)
             {
-                Bout = 0;
+                Bout = 255;
             }
 
-            if (Rout > 250)
+            if (Rout > 255)
             {
-                Rout = 250;
+                Rout = 0;
             }
-            if (Gout > 250)
+            if (Gout > 255)
             {
-                Gout = 250;
+                Gout = 0;
             }
-            if (Bout > 250)
+            if (Bout > 255)
             {
-                Bout = 250;
+                Bout = 0;
             }
         }
 
