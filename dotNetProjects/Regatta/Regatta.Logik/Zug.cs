@@ -12,6 +12,7 @@ namespace Regatta.Logik
         Position _pos;
         int _laenge;
         RegattaLogik.Windrichtung _richtung;
+        bool _isBoeeMoeglich;
      
         public Position Pos
         {
@@ -29,6 +30,12 @@ namespace Regatta.Logik
         {
             get { return _richtung; }
             set { _richtung = value; }
+        }
+
+        public bool IsBoeeMoeglich
+        {
+            get { return _isBoeeMoeglich; }
+            set { _isBoeeMoeglich = value; }
         }
     }
 }

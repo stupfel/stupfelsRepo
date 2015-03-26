@@ -35,17 +35,25 @@ namespace Regatta.Logik
         public static List<Zug> ErmittleZugmoeglichkeiten(RegattaLogik.Windrichtung windrichtung, Yacht yacht, List<Yacht> listYachten)
         {
             // Ermittelt alle Zugmöglichkeiten der aktuellen Yacht
-            List<Zug> listZug = new List<Zug>();
-            Zug currentZug;
+            List<Zug> _listZug = new List<Zug>();
+            Zug _currentZug;
+            int _AnzahlFelderMax;
+            int _AnzzahlFelderMoeglich;
 
-            currentZug = new Zug();
             yacht.drehe(Richtung.links);
+            for (int i = 0; i <= 2; i++)
+            {
+                _currentZug = new Zug();
+                _AnzahlFelderMax = yacht.getAnzahlFelder(windrichtung, false);
+                yacht.move(_AnzahlFelderMax, out _AnzzahlFelderMoeglich);
+                _currentZug.Laenge = _AnzzahlFelderMoeglich;
+                _currentZug.Pos = yacht.Pos;
+                _currentZug.Richtung = yacht.Richtung;
+                _listZug.Add(_currentZug);
+                yacht.drehe(Richtung.rechts);
+            }
 
-            yacht.getAnzahlFelder(yacht.Richtung, windrichtung, false);
-
-
-
-            return listZug;
+            return _listZug;
         }
 
         public static Windwinkel BerechneWindwinkel(Windrichtung windrichtung, Yacht yacht)

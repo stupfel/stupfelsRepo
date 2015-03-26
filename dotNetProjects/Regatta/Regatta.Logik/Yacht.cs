@@ -54,8 +54,9 @@ namespace Regatta.Logik
             }
         }
 
-        // segelt
-        public int getAnzahlFelder(RegattaLogik.Richtung Segelrichtung, RegattaLogik.Windrichtung windrichtung, bool BoeeNutzen)
+        // Anzahl der möglichen Felder, die gesegelt werden können
+        // Abhängig von Windrichtung, Böe nutzen und Spinnacker
+        public int getAnzahlFelder(RegattaLogik.Windrichtung windrichtung, bool BoeeNutzen)
         {
             int AnzahlFelder = 0;
 
@@ -84,9 +85,18 @@ namespace Regatta.Logik
                 AnzahlFelder = AnzahlFelder + 1;
             }
 
+            //Spinnacker darf genutzt werden wenn:
+            //Wind von Hinten
+            //Wind von SchraegHinten
+            //Ist der Spinnacker aktiv und es ist ein anderer Windwinkel ist die Zuglänge 0, denn um diese Richtung zu fahren
+            //muss der Spinnacker eingezogen werden.
             if (_spinnackerAktiv)
             {
                 AnzahlFelder = AnzahlFelder + 1;
+            }
+            else
+            {
+                aaa
             }
 
             return AnzahlFelder;
@@ -172,11 +182,6 @@ namespace Regatta.Logik
             }
         }
 
-        public void ZuegeErmitteln()
-        {
-
-        }
-
         public RegattaLogik.Windwinkel getWindwinkel(RegattaLogik.Windrichtung windrichtung)
         {
             return RegattaLogik.BerechneWindwinkel(windrichtung, this);
@@ -246,5 +251,12 @@ namespace Regatta.Logik
         {
             get { return id; }
         }
+
+        public Position Pos
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
+
     }
 }
