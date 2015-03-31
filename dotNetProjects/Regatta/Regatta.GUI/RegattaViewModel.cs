@@ -15,7 +15,7 @@ namespace Regatta.GUI
     public class RegattaViewModel : INotifyPropertyChanged
     {
         //RegattaBrett brett;
-        RegattaController control;
+        RegattaController _control;
         BitmapImage _WindroseSource;
         BitmapImage imageWindrose;
 
@@ -24,7 +24,7 @@ namespace Regatta.GUI
 
         public RegattaViewModel()
         {
-            control = new RegattaController();
+            _control = new RegattaController();
             //brett = new RegattaBrett();
 
             dictImages = new Dictionary<RegattaLogik.Windrichtung, BitmapImage>();
@@ -60,7 +60,7 @@ namespace Regatta.GUI
         // Schnittstelle zur Logik
         public RegattaLogik.Windrichtung getWindroseRichtung()
         {
-            return control.Spielbrett.getWindroseRichtung();
+            return _control.Spielbrett.getWindroseRichtung();
         }
 
         //Properties Laden
@@ -84,20 +84,28 @@ namespace Regatta.GUI
 
         public string WerIstAmZug
         {
-            get { return  "Am Zug: " + control.WerIstAmZug; }
+            get { return  "Am Zug: " + _control.WerIstAmZug; }
         }
        
+        public int MaxReihen
+        {
+            get { return _control.Spielbrett.MaxReihen; }
+        }
 
+        public List<Yacht> Yachten
+        {
+            get { return _control.Spielbrett.getYachten(); }
+        }
 
         //DEBUG-Buttons
         public void WinrdoseLinks()
         {
-            control.Spielbrett.WindroseLinks();
+            _control.Spielbrett.WindroseLinks();
             LoadWindroseImage();
         }
         public void WinrdoseRechts()
         {
-            control.Spielbrett.WindroseRechts();
+            _control.Spielbrett.WindroseRechts();
             LoadWindroseImage();
         }
     }

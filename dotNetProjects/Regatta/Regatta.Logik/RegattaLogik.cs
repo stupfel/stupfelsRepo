@@ -39,16 +39,18 @@ namespace Regatta.Logik
             Zug _currentZug;
             int _AnzahlFelderMax;
             int _AnzzahlFelderMoeglich;
+            bool _SpinnakerMoeglich = false;
 
             yacht.drehe(Richtung.links);
             for (int i = 0; i <= 2; i++)
             {
                 _currentZug = new Zug();
-                _AnzahlFelderMax = yacht.getAnzahlFelder(windrichtung, false);
+                _AnzahlFelderMax = yacht.getAnzahlFelder(windrichtung, false, ref _SpinnakerMoeglich);
                 yacht.move(_AnzahlFelderMax, out _AnzzahlFelderMoeglich);
                 _currentZug.Laenge = _AnzzahlFelderMoeglich;
                 _currentZug.Pos = yacht.Pos;
                 _currentZug.Richtung = yacht.Richtung;
+                _currentZug.IsSpinnakerMoeglich = _SpinnakerMoeglich;
                 _listZug.Add(_currentZug);
                 yacht.drehe(Richtung.rechts);
             }

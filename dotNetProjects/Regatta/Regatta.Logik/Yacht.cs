@@ -9,7 +9,7 @@ namespace Regatta.Logik
         private Position _position;
 
         private RegattaLogik.Windrichtung _richtung;
-        private bool _spinnackerAktiv;
+        private bool _SpinnakerAktiv;
         private int _AnzahlBoeen;
 
         public Yacht(int id, RegattaBrett Brett, int x, int y, RegattaLogik.Windrichtung richtung)
@@ -18,7 +18,7 @@ namespace Regatta.Logik
             _Brett = Brett;
             _position = new Position(x, y);
             _richtung = richtung;
-            _spinnackerAktiv = false;
+            _SpinnakerAktiv = false;
             _AnzahlBoeen = 2;
         }
 
@@ -55,8 +55,8 @@ namespace Regatta.Logik
         }
 
         // Anzahl der möglichen Felder, die gesegelt werden können
-        // Abhängig von Windrichtung, Böe nutzen und Spinnacker
-        public int getAnzahlFelder(RegattaLogik.Windrichtung windrichtung, bool BoeeNutzen)
+        // Abhängig von Windrichtung, Böe nutzen und Spinnaker
+        public int getAnzahlFelder(RegattaLogik.Windrichtung windrichtung, bool BoeeNutzen, ref bool SpinnakerAktiv)
         {
             int AnzahlFelder = 0;
 
@@ -85,18 +85,27 @@ namespace Regatta.Logik
                 AnzahlFelder = AnzahlFelder + 1;
             }
 
-            //Spinnacker darf genutzt werden wenn:
+            //Spinnaker darf genutzt werden wenn:
             //Wind von Hinten
             //Wind von SchraegHinten
-            //Ist der Spinnacker aktiv und es ist ein anderer Windwinkel ist die Zuglänge 0, denn um diese Richtung zu fahren
-            //muss der Spinnacker eingezogen werden.
-            if (_spinnackerAktiv)
+            //Ist der Spinnaker aktiv und es ist ein anderer Windwinkel ist die Zuglänge 0, denn um diese Richtung zu fahren
+            //muss der Spinnaker eingezogen werden.
+            if (getWindwinkel(windrichtung) == (RegattaLogik.Windwinkel.Hinten | RegattaLogik.Windwinkel.SchraegHinten))
             {
                 AnzahlFelder = AnzahlFelder + 1;
+                SpinnakerAktiv = true;
             }
             else
             {
-                aaa
+                if (_SpinnakerAktiv)
+                {
+                    AnzahlFelder = 0;
+                    SpinnakerAktiv = false;
+                }
+                else
+                {
+                    SpinnakerAktiv = false;
+                }
             }
 
             return AnzahlFelder;
@@ -192,14 +201,14 @@ namespace Regatta.Logik
             _AnzahlBoeen = _AnzahlBoeen - 1;
         }
 
-        public void SpinnackerSetzen()
+        public void SpinnakerSetzen()
         {
-            _spinnackerAktiv = true;
+            _SpinnakerAktiv = true;
         }
 
-        public void SpinnackerEinzahlen()
+        public void SpinnakerEinzahlen()
         {
-            _spinnackerAktiv = false;
+            _SpinnakerAktiv = false;
         }
 
         public bool SamePosition(Yacht y)

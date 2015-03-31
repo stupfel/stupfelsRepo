@@ -36,13 +36,23 @@ namespace Regatta.GUI
 
             
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < _vm.MaxReihen; i++)
             {
                 regattaGrid.RowDefinitions.Add(new RowDefinition());
                 regattaGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
             drawStatus();
             drawGrid();
+            drawYachten(_vm.Yachten);
+        }
+
+        private void drawYachten(List<Yacht> Yachten)
+        {
+            foreach (var yacht in Yachten)
+	        {
+                regattaGrid.ColumnDefinitions.ElementAt(yacht.Pos.X);
+	        }
+            
         }
 
         private void drawStatus()

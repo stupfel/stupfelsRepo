@@ -8,6 +8,8 @@ namespace Regatta.Logik
 {
     public class RegattaBrett
     {
+        private const int _MaxReihen = 50;
+        private const int _MaxSpalten = 50;
 
         private Boje _BojeAStart;
         private Boje _BojeBStart;
@@ -70,6 +72,11 @@ namespace Regatta.Logik
                     return "niemand";
                 }
             }
+        }
+
+        public int MaxReihen
+        {
+            get { return _MaxReihen; }
         }
     }
 }
