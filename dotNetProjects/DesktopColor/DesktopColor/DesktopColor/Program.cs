@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Threading;
+using DeskColor;
 
 namespace DesktopColor
 {
